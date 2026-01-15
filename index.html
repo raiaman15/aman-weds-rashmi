@@ -238,7 +238,8 @@
         .rsvp-modal .modal-body {
             padding: 0;
         }
-        .rsvp-modal iframe {
+        .rsvp-modal iframe,
+        #rsvpPreload {
             display: block;
             width: 100%;
             min-height: 500px;
@@ -254,6 +255,22 @@
             border: none; transition: all 0.3s;
         }
         .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); color: white; }
+
+        /* Calendar CTA emphasis */
+        .calendar-cta {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        .calendar-cta:hover {
+            animation: none;
+        }
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(197, 160, 89, 0.6);
+            }
+        }
 
         .btn-outline-gold {
             background: transparent;
@@ -366,6 +383,9 @@
         <img id="lightbox-img" src="" alt="Zoomed Invitation">
     </div>
 
+    <!-- Preload RSVP Form (hidden off-screen) -->
+    <iframe id="rsvpPreload" src="https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true&usp=sf_link" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;" aria-hidden="true"></iframe>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
@@ -377,7 +397,7 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#invitation">Invitation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Program</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</a></li>
                 </ul>
             </div>
@@ -431,8 +451,8 @@
             <div id="countdown" class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap mb-5" data-aos="fade-up" data-aos-delay="100"></div>
 
             <div data-aos="fade-up" data-aos-delay="200">
-                <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDUwYnNoZWQzbmh2cThmazE4MWd2b3Z1cXIgZmFtaWx5MTQ4NDQ1NjQ5MDAwNTI0MDg5MjBAZw&tmsrc=family14844564900052408920%40group.calendar.google.com" target="_blank" class="btn btn-outline-gold rounded-0">
-                    <i class="far fa-calendar-alt me-2"></i> Add to My Calendar
+                <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDUwYnNoZWQzbmh2cThmazE4MWd2b3Z1cXIgZmFtaWx5MTQ4NDQ1NjQ5MDAwNTI0MDg5MjBAZw&tmsrc=family14844564900052408920%40group.calendar.google.com" target="_blank" class="btn btn-gold btn-lg rounded-0 calendar-cta">
+                    <i class="far fa-calendar-alt me-2"></i> Add to My Calendar <i class="fas fa-arrow-right ms-2"></i>
                 </a>
             </div>
         </div>
@@ -486,7 +506,7 @@
 
                 <!-- Card 3: Reception -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#rsvpModal" style="cursor: pointer;">
+                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#receptionModal" style="cursor: pointer;">
                         <div class="mb-4">
                             <i class="fas fa-glass-cheers text-gold display-4"></i>
                         </div>
@@ -497,8 +517,8 @@
                             <span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
                         </div>
                         <p class="font-serif fs-5 text-muted mb-4 fst-italic">"An evening of dinner, dance & delight."</p>
-                        <p class="small text-muted mb-4">Join us for a night of celebration and feasting with friends and family.</p>
-                        <span class="text-gold small fw-bold text-uppercase ls-1">Click to RSVP</span>
+                        <p class="small text-muted mb-0">Join us for a night of celebration and feasting with friends and family.</p>
+                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
                     </div>
                 </div>
             </div>
@@ -533,7 +553,7 @@
         <div class="container">
             <h2 class="font-script text-white mb-2 display-4">Aman & Rashmi</h2>
             <div class="section-divider mb-3"></div>
-            <p class="small text-uppercase ls-2 mb-0">#AmanWedsRashmi • 2026</p>
+            <p class="small ls-2 mb-0" style="color: rgba(255,255,255,0.6);">#AmanWedsRashmi</p>
         </div>
     </footer>
 
@@ -575,6 +595,25 @@
         </div>
     </div>
 
+    <!-- Reception Modal -->
+    <div class="modal fade" id="receptionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-serif fw-bold text-gold">Reception</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pb-5">
+                    <i class="fas fa-glass-cheers display-4 text-gold mb-4"></i>
+                    <p class="font-serif fs-5 mb-3 fst-italic">"An evening of dinner, dance & delight."</p>
+                    <p class="text-muted">The evening promises delightful cuisine, joyful music, and cherished moments with family and friends. Your presence and blessings will make our celebration complete.</p>
+                    <div class="section-divider my-4"></div>
+                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- RSVP Modal with Google Form -->
     <div class="modal fade rsvp-modal" id="rsvpModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -585,8 +624,8 @@
                     </div>
                     <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1rem;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <iframe id="rsvpFormFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true&usp=sf_link" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Loading…</iframe>
+                <div class="modal-body" id="rsvpModalBody">
+                    <!-- Form will be moved here from preload -->
                 </div>
             </div>
         </div>
@@ -621,14 +660,25 @@
             `;
         }, 1000);
 
-        // RSVP Modal - Show on page load
+        // RSVP Modal - Form preloads in background, show after 7 seconds
         const rsvpModal = document.getElementById('rsvpModal');
+        const rsvpPreload = document.getElementById('rsvpPreload');
+        const rsvpModalBody = document.getElementById('rsvpModalBody');
+
+        // Move preloaded iframe to modal when it's about to show
+        rsvpModal.addEventListener('show.bs.modal', function () {
+            if (rsvpPreload && rsvpModalBody && !rsvpModalBody.contains(rsvpPreload)) {
+                rsvpPreload.style.cssText = '';
+                rsvpPreload.removeAttribute('aria-hidden');
+                rsvpModalBody.appendChild(rsvpPreload);
+            }
+        });
 
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const modal = new bootstrap.Modal(rsvpModal);
                 modal.show();
-            }, 1500);
+            }, 7000);
         });
 
         // Lightbox Logic
