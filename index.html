@@ -119,11 +119,48 @@
         }
 
         /* Countdown */
-        .timer-box {
-            min-width: 100px; padding: 1.5rem; background: #fff;
-            border: 1px solid rgba(197, 160, 89, 0.2);
+        .countdown-section {
+            background: linear-gradient(180deg, var(--bg-cream) 0%, #F5F0E6 100%);
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
-        .timer-num { font-family: 'Cinzel', serif; font-size: 3rem; line-height: 1; }
+        .timer-box {
+            min-width: 110px;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .timer-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+        .timer-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+        }
+        .timer-num {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            line-height: 1;
+            color: var(--text-dark);
+        }
+        .timer-label {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
+            color: var(--primary-gold);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
 
         /* Events - Redesigned */
         .event-card {
@@ -150,7 +187,7 @@
         
         /* Venue Section */
         .venue-section {
-            background-color: var(--bg-beige);
+            background: linear-gradient(180deg, #F5F0E6 0%, var(--bg-cream) 100%);
             padding: 80px 0;
             border-top: 1px solid rgba(197, 160, 89, 0.2);
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
@@ -182,6 +219,23 @@
         }
         .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); color: white; }
 
+        .btn-outline-gold {
+            background: transparent;
+            border: 1px solid var(--primary-gold) !important;
+            color: var(--text-dark);
+            padding: 0.75rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-gold:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.25);
+        }
+
         /* Lightbox */
         #lightbox {
             display: none;
@@ -211,8 +265,10 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
             .hero-content { padding: 2rem; }
-            .timer-box { min-width: 70px; padding: 0.5rem; }
+            .timer-box { min-width: 70px; padding: 1rem 0.5rem; }
+            .timer-box::before { width: 25px; height: 2px; }
             .timer-num { font-size: 1.8rem; }
+            .timer-label { font-size: 0.6rem; letter-spacing: 1px; }
         }
     </style>
 </head>
@@ -276,14 +332,21 @@
     </section>
 
     <!-- Countdown -->
-    <section class="py-5 bg-light">
+    <section class="countdown-section py-5">
         <div class="container text-center">
-            <p class="font-serif fst-italic fs-4 text-muted mb-4">Awaiting the Auspicious Moment</p>
-            <div id="countdown" class="d-flex justify-content-center gap-3 flex-wrap mb-5"></div>
-            
-            <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDUwYnNoZWQzbmh2cThmazE4MWd2b3Z1cXIgZmFtaWx5MTQ4NDQ1NjQ5MDAwNTI0MDg5MjBAZw&tmsrc=family14844564900052408920%40group.calendar.google.com" target="_blank" class="btn btn-outline-dark rounded-0 px-4 py-2 ls-2">
-                <i class="far fa-calendar-alt me-2"></i> Add to My Calendar
-            </a>
+            <div data-aos="fade-up">
+                <span class="font-script fs-2 text-gold">Save the Date</span>
+                <h2 class="display-6 mb-2">Counting Down to Forever</h2>
+                <div class="mx-auto mb-4" style="width: 60px; height: 2px; background: var(--primary-gold);"></div>
+            </div>
+
+            <div id="countdown" class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap mb-5" data-aos="fade-up" data-aos-delay="100"></div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+                <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDUwYnNoZWQzbmh2cThmazE4MWd2b3Z1cXIgZmFtaWx5MTQ4NDQ1NjQ5MDAwNTI0MDg5MjBAZw&tmsrc=family14844564900052408920%40group.calendar.google.com" target="_blank" class="btn btn-outline-gold rounded-0">
+                    <i class="far fa-calendar-alt me-2"></i> Add to My Calendar
+                </a>
+            </div>
         </div>
     </section>
 
@@ -499,10 +562,10 @@
             const s = Math.floor((distance % (1000 * 60)) / 1000);
 
             document.getElementById("countdown").innerHTML = `
-                <div class="timer-box"><div class="timer-num">${d}</div><div class="text-uppercase small text-muted">Days</div></div>
-                <div class="timer-box"><div class="timer-num">${h}</div><div class="text-uppercase small text-muted">Hrs</div></div>
-                <div class="timer-box"><div class="timer-num">${m}</div><div class="text-uppercase small text-muted">Mins</div></div>
-                <div class="timer-box"><div class="timer-num">${s}</div><div class="text-uppercase small text-muted">Secs</div></div>
+                <div class="timer-box"><div class="timer-num">${d}</div><div class="timer-label">Days</div></div>
+                <div class="timer-box"><div class="timer-num">${h}</div><div class="timer-label">Hours</div></div>
+                <div class="timer-box"><div class="timer-num">${m}</div><div class="timer-label">Minutes</div></div>
+                <div class="timer-box"><div class="timer-num">${s}</div><div class="timer-label">Seconds</div></div>
             `;
         }, 1000);
 
