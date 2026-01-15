@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aman & Rashmi - The Wedding</title>
+    <title>Aman & Rashmi - The Royal Union</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
     
     <!-- Bootstrap 5 CSS -->
@@ -12,22 +12,33 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            /* Refined Color Palette based on Invitation Card aesthetics */
-            --primary-gold: #D4AF37; /* Classic Gold */
-            --primary-dark: #2C3E50; /* Deep Elegant Navy/Charcoal */
-            --bg-cream: #FDFBF7; /* Soft Paper/Cream background */
-            --text-dark: #333333;
-            --accent-border: #E5D5B0;
+            /* Venue Base: Neutral Creams & Beige */
+            --bg-cream: #FDFBF7;
+            --bg-beige: #F5F0E6;
+
+            /* Luxe Accents: Gold & Metallic */
+            --primary-gold: #C5A059;
+            --primary-gold-light: #E5C585;
+
+            /* Venue Lighting: Dramatic Moods */
+            --mood-amber: rgba(255, 191, 0, 0.1);  /* Chandelier Glow */
+            --mood-purple: #2E1A47;               /* Dramatic Evening */
+            --mood-blue: #1A2530;                 /* Midnight Royal */
+            
+            /* Text & UI */
+            --text-dark: #2C3E50;
+            --text-light: #F9F7F2;
+            --glass-bg: rgba(255, 255, 255, 0.9);
         }
 
         body {
@@ -38,248 +49,333 @@
             line-height: 1.8;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--primary-dark);
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--text-dark);
             letter-spacing: 1px;
         }
 
-        .script-font {
-            font-family: 'Great Vibes', cursive;
-            color: var(--primary-gold);
-        }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-script { font-family: 'Great Vibes', cursive; color: var(--primary-gold); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 4px; }
 
         /* Navbar */
         .navbar {
-            background-color: rgba(253, 251, 247, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--accent-border);
             padding: 1rem 0;
+            transition: all 0.4s ease;
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
 
         .navbar-brand {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--primary-dark) !important;
-            letter-spacing: 3px;
+            color: var(--text-dark);
         }
 
         .nav-link {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-dark) !important;
-            margin: 0 15px;
             font-weight: 500;
+            position: relative;
+            margin: 0 1rem;
         }
 
-        /* Hero Section - No card background */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary-gold);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Hero Section */
         .hero {
-            height: 90vh;
-            background-color: var(--bg-cream);
+            min-height: 100vh;
+            background-image: url('assets/img/venue-day.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            border-bottom: 1px solid var(--accent-border);
+            overflow: hidden;
+            transition: background-image 0.5s ease-in-out;
         }
 
-        /* Elegant floral ornaments (SVG) */
-        .hero::before, .hero::after {
+        /* Overlay for Hero */
+        .hero::before {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background-repeat: no-repeat;
-            opacity: 0.1;
-        }
-        .hero::before {
-            top: 50px;
-            left: 50px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10 Q 50 10 50 50 Q 50 90 90 90' stroke='%23D4AF37' fill='transparent' stroke-width='1'/%3E%3C/svg%3E");
-        }
-        .hero::after {
-            bottom: 50px;
-            right: 50px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M90 10 Q 50 10 50 50 Q 50 90 10 90' stroke='%23D4AF37' fill='transparent' stroke-width='1'/%3E%3C/svg%3E");
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(253, 251, 247, 0.70); /* Day Overlay */
+            z-index: 1;
+            transition: background 0.5s ease-in-out;
         }
 
-        .hero-content h1 {
-            font-size: 5.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
+        .hero-content {
+            z-index: 2;
+            padding: 4rem;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            max-width: 900px;
+            position: relative;
+            transition: background 0.5s ease, border-color 0.5s ease;
         }
 
-        .hero-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--primary-gold);
-            margin-top: 1rem;
+        .hero-content::after {
+            content: '';
+            position: absolute;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            pointer-events: none;
         }
 
-        /* Invitation Card Display - Shown only once */
-        .invitation-section {
-            padding: 120px 0;
-            background-color: #fff;
+        .hero h1 {
+            font-size: 5rem;
+            margin: 0.5rem 0;
+            background: linear-gradient(to right, var(--text-dark), #4a4a4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .card-frame {
-            padding: 20px;
-            background: #fff;
-            border: 1px solid var(--accent-border);
-            box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+        .hero-date-box {
             display: inline-block;
-        }
-
-        .invitation-img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #f0f0f0;
-        }
-
-        /* Section Styling */
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .title-ornament {
-            width: 80px;
-            height: 1px;
-            background: var(--primary-gold);
-            margin: 20px auto;
+            border-top: 2px solid var(--primary-gold);
+            border-bottom: 2px solid var(--primary-gold);
+            padding: 0.8rem 3rem;
+            margin: 2rem 0;
             position: relative;
         }
-        .title-ornament::after {
-            content: '❦';
+
+        /* Invitation Showcase */
+        .invitation-showcase {
+            padding: 100px 0;
+            position: relative;
+            background-image: url('assets/img/venue-day.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-image 0.5s ease-in-out;
+        }
+        
+        .invitation-showcase::before {
+            content: '';
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: inherit;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: var(--primary-gold);
-            padding: 0 10px;
-            background-color: transparent;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(253, 251, 247, 0.90);
+            backdrop-filter: blur(5px);
+            transition: background 0.5s ease-in-out;
         }
 
-        /* Details Cards */
-        .details-box {
+        /* Dark Mode / Night Theme Logic */
+        @media (prefers-color-scheme: dark) {
+            .hero {
+                background-image: url('assets/img/venue-night.png');
+            }
+            .hero::before {
+                background: rgba(18, 24, 32, 0.6); /* Darker overlay for night */
+            }
+            .invitation-showcase {
+                background-image: url('assets/img/venue-night.png');
+            }
+            .invitation-showcase::before {
+                background: rgba(18, 24, 32, 0.85); /* Dark overlay for invitation section */
+            }
+            
+            /* Adjust content visibility for dark mode */
+            .hero-content {
+                background: rgba(255, 255, 255, 0.90); /* Keep content box light for contrast */
+            }
+        }
+
+        .invitation-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(253, 251, 247, 0.90);
+            backdrop-filter: blur(5px);
+        }
+
+        .invitation-content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .invitation-frame {
+            padding: 20px;
             background: #fff;
-            padding: 4rem 2rem;
-            border: 1px solid var(--accent-border);
-            height: 100%;
-            transition: all 0.4s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15); /* Enhanced Shadow */
+            border: 10px solid #fff; /* White Border */
+            outline: 1px solid #f0f0f0;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            max-width: 100%;
         }
-        .details-box:hover {
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
-            transform: translateY(-5px);
+        
+        .invitation-frame:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 40px 80px rgba(197, 160, 89, 0.25);
         }
 
-        /* Countdown */
-        .countdown-box {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
+        /* Countdown Section */
+        .countdown-section {
+            background-color: var(--bg-cream);
+            position: relative;
         }
-        .countdown-item {
-            text-align: center;
+        
+        .timer-box {
+            min-width: 100px;
+            padding: 1.5rem;
+            background: #fff;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
-        .countdown-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            color: var(--primary-dark);
+
+        .timer-num {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
             line-height: 1;
-            font-weight: 300;
         }
-        .countdown-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary-gold);
-        }
-
-        /* RSVP Form */
-        .rsvp-container {
-            max-width: 700px;
-            margin: 0 auto;
+        
+        /* Events - Larger Cards */
+        .event-card {
             background: #fff;
-            padding: 5rem;
-            border: 1px solid var(--accent-border);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            border: none;
+            border-bottom: 4px solid var(--primary-gold);
+            padding: 4rem 3rem; /* Increased padding */
+            height: 100%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); /* Stronger shadow */
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(46, 26, 71, 0.15); 
         }
 
-        .form-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            color: var(--primary-dark);
+        .icon-gold {
+            color: var(--primary-gold);
+            font-size: 3rem; /* Larger icon */
+            margin-bottom: 2rem;
+            text-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        /* RSVP - Dramatic Mood Lighting */
+        .rsvp-section {
+            background: linear-gradient(135deg, var(--mood-blue) 0%, var(--mood-purple) 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .rsvp-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .rsvp-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .form-control, .form-select {
-            border: none;
-            border-bottom: 1px solid var(--accent-border);
-            border-radius: 0;
-            padding: 0.75rem 0;
-            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 4px;
         }
-
+        
         .form-control:focus, .form-select:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary-gold);
+            color: #fff;
             box-shadow: none;
-            border-bottom-color: var(--primary-gold);
         }
-
-        .btn-elegant {
-            background-color: var(--primary-dark);
+        
+        .form-control::placeholder { color: rgba(255,255,255,0.5); }
+        
+        /* Buttons */
+        .btn-gold {
+            background: linear-gradient(45deg, #d4af37, #c5a059);
             color: white;
-            padding: 1rem 3.5rem;
-            border-radius: 0;
+            padding: 1rem 3rem;
+            border-radius: 2px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border: none;
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s;
-            margin-top: 2rem;
         }
-
-        .btn-elegant:hover {
-            background-color: var(--primary-gold);
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
             color: white;
         }
 
-        /* Footer */
-        footer {
-            padding: 80px 0;
-            text-align: center;
-            border-top: 1px solid var(--accent-border);
-            background-color: #fff;
+        /* Subtle Float Animation */
+        @keyframes float {
+            0% { transform: translate(-50%, 0px); }
+            50% { transform: translate(-50%, -10px); }
+            100% { transform: translate(-50%, 0px); }
         }
+        .floating { animation: float 3s ease-in-out infinite; }
 
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 3.5rem; }
-            .rsvp-container { padding: 2rem; }
-            .countdown-box { gap: 1rem; }
-            .countdown-val { font-size: 2rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-content { padding: 2rem; }
+            .timer-box { min-width: 70px; padding: 0.5rem; }
+            .timer-num { font-size: 1.8rem; }
         }
     </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">A & R</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#">Aman & Rashmi</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="fa fa-bars text-dark"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#invitation">The Invitation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#details">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#invitation">Invitation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
                     <li class="nav-item"><a class="nav-link" href="#rsvp">RSVP</a></li>
                 </ul>
             </div>
@@ -288,66 +384,109 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
-            <span class="script-font" style="font-size: 2.5rem;">Save the Date</span>
-            <h1>Aman & Rashmi</h1>
-            <div class="title-ornament"></div>
-            <p class="hero-date">25 . 02 . 2026</p>
-            <p class="text-uppercase mt-4" style="letter-spacing: 4px; font-size: 0.9rem;">Gurugram, Haryana</p>
+        <div class="container position-relative">
+            <div class="hero-content mx-auto" data-aos="fade-up" data-aos-duration="1500">
+                <div class="mb-3">
+                    <span class="font-script" style="font-size: 2.8rem;">We are getting married</span>
+                </div>
+                <h1>Aman & Rashmi</h1>
+                
+                <div class="hero-date-box">
+                    <span class="font-serif fw-bold fs-4" style="letter-spacing: 3px; color: var(--text-dark);">FEBRUARY 25, 2026</span>
+                </div>
+                
+                <p class="text-uppercase mb-0" style="letter-spacing: 4px; font-size: 0.9rem; color: #666;">Bliss Premiere • Gurugram</p>
+                
+                <div class="mt-4">
+                    <i class="fas fa-star" style="color: var(--primary-gold); font-size: 0.8rem;"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 floating" style="z-index: 5;">
+            <a href="#invitation" class="text-dark opacity-50"><i class="fas fa-chevron-down fa-2x"></i></a>
         </div>
     </section>
 
-    <!-- Invitation Card Section (Used once here) -->
-    <section id="invitation" class="invitation-section">
-        <div class="container text-center">
-            <div class="mb-5" data-aos="fade-up">
-                <span class="script-font" style="font-size: 2rem;">You are invited</span>
-                <h2 class="display-6 mt-2">The Official Invitation</h2>
-            </div>
-            <div class="card-frame" data-aos="zoom-in" data-aos-duration="1200">
-                <img src="wedding-invitation-card.png" alt="Aman & Rashmi Wedding Invitation" class="invitation-img">
+    <!-- Invitation Section -->
+    <section id="invitation" class="invitation-showcase">
+        <div class="container text-center invitation-content-wrapper">
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-duration="1200">
+                    <span class="font-script text-gold" style="font-size: 2.2rem; color: var(--primary-gold);">Together with our families</span>
+                    <h2 class="mb-5 mt-2">Wedding Reception</h2>
+                    
+                    <div class="invitation-frame d-inline-block">
+                        <!-- Added width styling here to force it larger if needed -->
+                        <img src="wedding-invitation-card.png" alt="Wedding Invitation" class="img-fluid" style="width: 100%; max-width: 800px;">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Countdown Section -->
-    <section class="section-padding bg-white">
-        <div class="container text-center">
-            <h3 class="mb-4" style="font-style: italic;">Counting down the days...</h3>
-            <div id="timer" class="countdown-box" data-aos="fade-up">
-                <!-- Timer injected via JS -->
+    <section class="py-5 countdown-section">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-8 text-center">
+                    <p class="font-serif fst-italic fs-4 text-muted mb-4">Counting down to our forever</p>
+                    <div id="countdown" class="d-flex justify-content-center gap-3 flex-wrap"></div>
+                    
+                    <div class="mt-5">
+                        <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDUwYnNoZWQzbmh2cThmazE4MWd2b3Z1cXIgZmFtaWx5MTQ4NDQ1NjQ5MDAwNTI0MDg5MjBAZw&tmsrc=family14844564900052408920%40group.calendar.google.com" target="_blank" class="btn btn-outline-dark rounded-0 px-4 py-2" style="letter-spacing: 1px;">
+                            <i class="far fa-calendar-alt me-2"></i> Save to Calendar
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Events Section -->
-    <section id="details" class="section-padding">
+    <section id="events" class="py-5 my-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title h1">Wedding Events</h2>
-                <div class="title-ornament"></div>
+                <span class="font-script" style="font-size: 2rem; color: var(--primary-gold);">Itinerary</span>
+                <h2 class="display-5">Wedding Events</h2>
+                <div class="mx-auto mt-3" style="width: 60px; height: 2px; background: var(--primary-gold);"></div>
             </div>
-            
+
             <div class="row g-5 justify-content-center">
-                <div class="col-md-5" data-aos="fade-right">
-                    <div class="details-box text-center">
-                        <h3 class="script-font" style="font-size: 3rem;">Reception</h3>
-                        <p class="mt-4 mb-2"><strong>Wednesday, February 25, 2026</strong></p>
-                        <p>7:00 PM onwards</p>
-                        <div class="my-4"><i class="fas fa-ring text-muted"></i></div>
-                        <h4>Bliss Premiere</h4>
-                        <p class="text-muted">Sector 17A, Gurugram, Haryana</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Bliss+Premiere+Sector+17A+Gurugram" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0 mt-3 px-4">View Map</a>
+                <!-- Reception Card -->
+                <div class="col-md-6 col-lg-5" data-aos="fade-right" data-aos-delay="100">
+                    <div class="event-card text-center">
+                        <i class="fas fa-glass-cheers icon-gold"></i>
+                        <h3 class="mb-3">The Reception</h3>
+                        <p class="text-uppercase fw-bold text-muted mb-1" style="letter-spacing: 2px;">Wednesday, Feb 25, 2026</p>
+                        <p class="mb-4 text-gold" style="color: var(--primary-gold);">7:00 PM Onwards</p>
+                        
+                        <p class="text-muted small">Join us for an elegant evening of dinner and dancing amidst the ambient lighting and luxe decor of Bliss Premiere.</p>
+                        <hr class="w-25 mx-auto opacity-25 my-4">
+                        <p class="small text-uppercase fw-bold" style="color: #666;">Celebration of Love</p>
                     </div>
                 </div>
 
-                <div class="col-md-5" data-aos="fade-left">
-                    <div class="details-box text-center">
-                        <h3 class="script-font" style="font-size: 3rem;">Dinner & Celebration</h3>
-                        <p class="mt-4 mb-2"><strong>Wednesday, February 25, 2026</strong></p>
-                        <p>Followed by Reception</p>
-                        <div class="my-4"><i class="fas fa-wine-glass-alt text-muted"></i></div>
-                        <p>Join us for an evening of music, dance, and a lavish dinner spread as we celebrate our new journey together.</p>
+                <!-- Venue Card -->
+                <div class="col-md-6 col-lg-5" data-aos="fade-left" data-aos-delay="200">
+                    <div class="event-card text-center">
+                        <i class="fas fa-map-marked-alt icon-gold"></i>
+                        <h3 class="mb-3">The Venue</h3>
+                        <p class="lead mb-1 font-serif fw-bold">Bliss Premiere</p>
+                        <p class="text-muted mb-4">Sector 17A, Gurugram</p>
+                        
+                        <div class="ratio ratio-16x9 mb-3 shadow-sm border">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.6468452668595!2d77.05646831507873!3d28.46006798248616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18d867c46f19%3A0xc30403756819548c!2sBliss%20Premiere!5e0!3m2!1sen!2sin!4v1625641234567!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        
+                        <a href="https://goo.gl/maps/PlaceHolderLink" target="_blank" class="btn btn-link text-dark text-decoration-none small text-uppercase fw-bold pb-0">
+                            View on Map <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                        <div class="mt-2">
+                            <a href="https://www.instagram.com/bliss_premiere" target="_blank" class="btn btn-link text-muted text-decoration-none small text-uppercase fw-bold">
+                                <i class="fab fa-instagram me-1"></i> @bliss_premiere
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -355,53 +494,66 @@
     </section>
 
     <!-- RSVP Section -->
-    <section id="rsvp" class="section-padding" style="background-color: #F8F4ED;">
+    <section id="rsvp" class="rsvp-section">
         <div class="container">
-            <div class="rsvp-container" data-aos="fade-up">
-                <div class="text-center mb-5">
-                    <h2 class="display-5">RSVP</h2>
-                    <p class="text-muted">Kindly respond by February 10, 2026</p>
-                </div>
-                
-                <form id="rsvpForm">
-                    <div class="mb-4">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" required placeholder="Enter your full name">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center mb-5" data-aos="fade-up">
+                        <span class="font-script text-white-50" style="font-size: 2rem;">R.S.V.P</span>
+                        <h2 class="text-white">Are You Attending?</h2>
+                        <p class="text-white-50 mt-2">Kindly respond by February 10, 2026</p>
                     </div>
-                    <div class="mb-4">
-                        <label class="form-label">Will you attend?</label>
-                        <select class="form-select" id="attending" required>
-                            <option value="" selected disabled>Select your response</option>
-                            <option value="yes">Accepts with pleasure</option>
-                            <option value="no">Declines with regret</option>
-                        </select>
-                    </div>
-                    <div class="mb-4" id="guestDiv">
-                        <label class="form-label">Number of Guests</label>
-                        <input type="number" class="form-control" id="guests" min="1" max="10" value="1">
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label">Message (Optional)</label>
-                        <textarea class="form-control" id="message" rows="2" placeholder="Send a wish to the couple"></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-elegant">Send Response</button>
-                    </div>
-                </form>
 
-                <div id="formStatus" class="mt-4 text-center d-none">
-                    <p class="alert alert-success">Thank you for your response! We look forward to seeing you.</p>
+                    <div class="rsvp-card" data-aos="fade-up" data-aos-duration="1000">
+                        <form id="rsvpForm">
+                            <div class="mb-3">
+                                <label class="form-label text-white-50 small text-uppercase ls-1">Full Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-white-50 small text-uppercase ls-1">Attendance</label>
+                                <select class="form-select" id="attending" required>
+                                    <option value="" selected disabled>Please select...</option>
+                                    <option value="yes">Joyfully Accepts</option>
+                                    <option value="no">Regretfully Declines</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3" id="guestContainer">
+                                <label class="form-label text-white-50 small text-uppercase ls-1">Number of Guests</label>
+                                <select class="form-select" id="guests">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-white-50 small text-uppercase ls-1">Message</label>
+                                <textarea class="form-control" id="message" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-gold w-100">Send Confirmation</button>
+                        </form>
+
+                        <div id="successMsg" class="d-none text-center py-4">
+                            <i class="fas fa-check-circle fa-4x mb-3 text-warning"></i>
+                            <h3 class="text-white">Thank You!</h3>
+                            <p class="text-white-50">Your response has been recorded.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="text-center py-5" style="background-color: #1A2530; color: #888;">
         <div class="container">
-            <h2 class="script-font" style="font-size: 3rem;">Aman & Rashmi</h2>
-            <p class="text-uppercase mt-3" style="letter-spacing: 2px; font-size: 0.8rem;">#AmanWedsRashmi</p>
-            <p class="mt-5 text-muted small">&copy; 2026 Aman & Rashmi. Built with love.</p>
+            <h2 class="font-script mb-3" style="font-size: 3rem; color: #fff;">Aman & Rashmi</h2>
+            <p class="small text-uppercase ls-2 mb-0">#AmanWedsRashmi • 2026</p>
         </div>
     </footer>
 
@@ -409,51 +561,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // AOS Initialization
+        // Init AOS
         AOS.init({
             duration: 1000,
             once: true,
             offset: 50
         });
 
-        // Countdown Timer - Date: Feb 25, 2026
-        const weddingDate = new Date("Feb 25, 2026 19:00:00").getTime();
+        // Sticky Navbar
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.getElementById('mainNav').classList.add('scrolled');
+            } else {
+                document.getElementById('mainNav').classList.remove('scrolled');
+            }
+        });
 
+        // Countdown
+        const weddingDate = new Date("Feb 25, 2026 19:00:00").getTime();
+        
         function updateTimer() {
             const now = new Date().getTime();
-            const diff = weddingDate - now;
+            const distance = weddingDate - now;
 
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("timer").innerHTML = `
-                <div class="countdown-item"><div class="countdown-val">${d}</div><div class="countdown-label">Days</div></div>
-                <div class="countdown-item"><div class="countdown-val">${h}</div><div class="countdown-label">Hours</div></div>
-                <div class="countdown-item"><div class="countdown-val">${m}</div><div class="countdown-label">Mins</div></div>
-                <div class="countdown-item"><div class="countdown-val">${s}</div><div class="countdown-label">Secs</div></div>
+            document.getElementById("countdown").innerHTML = `
+                <div class="timer-box"><div class="timer-num">${days}</div><div class="text-uppercase small text-muted">Days</div></div>
+                <div class="timer-box"><div class="timer-num">${hours}</div><div class="text-uppercase small text-muted">Hours</div></div>
+                <div class="timer-box"><div class="timer-num">${minutes}</div><div class="text-uppercase small text-muted">Mins</div></div>
+                <div class="timer-box"><div class="timer-num">${seconds}</div><div class="text-uppercase small text-muted">Secs</div></div>
             `;
-
-            if (diff < 0) {
-                clearInterval(timerInt);
-                document.getElementById("timer").innerHTML = "<h3>The Celebration has begun!</h3>";
-            }
         }
-
-        const timerInt = setInterval(updateTimer, 1000);
+        setInterval(updateTimer, 1000);
         updateTimer();
 
         // RSVP Logic
-        document.getElementById('attending').addEventListener('change', function() {
-            const div = document.getElementById('guestDiv');
-            div.style.display = this.value === 'no' ? 'none' : 'block';
+        const attendingSelect = document.getElementById('attending');
+        const guestContainer = document.getElementById('guestContainer');
+        const rsvpForm = document.getElementById('rsvpForm');
+
+        attendingSelect.addEventListener('change', function() {
+            if (this.value === 'no') {
+                guestContainer.style.opacity = '0.5';
+                guestContainer.style.pointerEvents = 'none';
+            } else {
+                guestContainer.style.opacity = '1';
+                guestContainer.style.pointerEvents = 'auto';
+            }
         });
 
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+        rsvpForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            this.classList.add('d-none');
-            document.getElementById('formStatus').classList.remove('d-none');
+            this.style.display = 'none';
+            document.getElementById('successMsg').classList.remove('d-none');
+            document.getElementById('successMsg').classList.add('animate__animated', 'animate__fadeIn');
         });
     </script>
 </body>
