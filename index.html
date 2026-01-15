@@ -649,7 +649,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="text-center w-100">
-                        <span class="font-script fs-3">We would be honored by your presence</span>
+                        <span class="font-script fs-2">We would be honored by your presence</span>
                     </div>
                     <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1rem;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -709,13 +709,21 @@
                 // Non-Chromium browser (Safari, Firefox, etc.)
                 rsvpModalBody.innerHTML = `
                     <div class="rsvp-button-container">
-                        <p>We would be grateful if you could kindly RSVP by 14th February to help us finalise the arrangements.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">
+                        <p>Our families will be grateful if you could kindly RSVP by 14th February.</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" class="rsvp-form-link">
                             Open RSVP Form →
                         </a>
                     </div>
                 `;
                 rsvpModalBody.classList.add('non-chromium');
+                
+                // Add click handler to RSVP link
+                const rsvpLink = rsvpModalBody.querySelector('.rsvp-form-link');
+                if (rsvpLink) {
+                    rsvpLink.addEventListener('click', function() {
+                        localStorage.setItem('rsvpFormClicked', 'true');
+                    });
+                }
             } else {
                 // Chromium-based browser - use iframe
                 if (rsvpPreload && !rsvpModalBody.contains(rsvpPreload)) {
@@ -739,6 +747,11 @@
         });
 
         window.addEventListener('load', function() {
+            // Check if user has already clicked the RSVP form link
+            if (localStorage.getItem('rsvpFormClicked') === 'true') {
+                return; // Don't show popup if already clicked
+            }
+            
             // Track popup views in localStorage
             const popupViewsKey = 'rsvpPopupViews';
             let popupViews = parseInt(localStorage.getItem(popupViewsKey)) || 0;
