@@ -247,6 +247,35 @@
             border: none;
             background: #fff;
         }
+        #rsvpModalBody.non-chromium {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            padding: 2rem;
+        }
+        .rsvp-button-container {
+            text-align: center;
+        }
+        .rsvp-button-container p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        .rsvp-button-container a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--primary-gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .rsvp-button-container a:hover {
+            background-color: #b8945a;
+            transform: scale(1.05);
+        }
 
         .btn-gold {
             background: linear-gradient(45deg, #d4af37, #c5a059);
@@ -660,14 +689,49 @@
             `;
         }, 1000);
 
-        // RSVP Modal - Form preloads in background, show after 7 seconds
+        // RSVP Modal - Check for Chromium browser
         const rsvpModal = document.getElementById('rsvpModal');
         const rsvpPreload = document.getElementById('rsvpPreload');
         const rsvpModalBody = document.getElementById('rsvpModalBody');
 
-        // Move preloaded iframe to modal when it's about to show
+        // Detect if browser is Chromium-based
+        function isChromiumBrowser() {
+            const userAgent = navigator.userAgent;
+            const isChrome = /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
+            const isEdge = /Edg/.test(userAgent);
+            const isOpera = /OPR/.test(userAgent);
+            return isChrome || isEdge || isOpera;
+        }
+
+        // Setup RSVP Modal based on browser type
+        function setupRSVPModal() {
+            if (!isChromiumBrowser()) {
+                // Non-Chromium browser (Safari, Firefox, etc.)
+                rsvpModalBody.innerHTML = `
+                    <div class="rsvp-button-container">
+                        <p>We would be grateful if you could kindly RSVP by 14th February to help us finalise the arrangements.</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">
+                            Open RSVP Form →
+                        </a>
+                    </div>
+                `;
+                rsvpModalBody.classList.add('non-chromium');
+            } else {
+                // Chromium-based browser - use iframe
+                if (rsvpPreload && !rsvpModalBody.contains(rsvpPreload)) {
+                    rsvpPreload.style.cssText = '';
+                    rsvpPreload.removeAttribute('aria-hidden');
+                    rsvpModalBody.appendChild(rsvpPreload);
+                }
+            }
+        }
+
+        // Setup modal on page load
+        document.addEventListener('DOMContentLoaded', setupRSVPModal);
+
+        // Move preloaded iframe to modal when it's about to show (for Chromium browsers)
         rsvpModal.addEventListener('show.bs.modal', function () {
-            if (rsvpPreload && rsvpModalBody && !rsvpModalBody.contains(rsvpPreload)) {
+            if (isChromiumBrowser() && rsvpPreload && rsvpModalBody && !rsvpModalBody.contains(rsvpPreload)) {
                 rsvpPreload.style.cssText = '';
                 rsvpPreload.removeAttribute('aria-hidden');
                 rsvpModalBody.appendChild(rsvpPreload);
@@ -675,10 +739,21 @@
         });
 
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                const modal = new bootstrap.Modal(rsvpModal);
-                modal.show();
-            }, 7000);
+            // Track popup views in localStorage
+            const popupViewsKey = 'rsvpPopupViews';
+            let popupViews = parseInt(localStorage.getItem(popupViewsKey)) || 0;
+            
+            // Show popup only if less than 5 times
+            if (popupViews < 5) {
+                setTimeout(function() {
+                    const modal = new bootstrap.Modal(rsvpModal);
+                    modal.show();
+                    
+                    // Increment counter
+                    popupViews++;
+                    localStorage.setItem(popupViewsKey, popupViews);
+                }, 3000);
+            }
         });
 
         // Lightbox Logic
