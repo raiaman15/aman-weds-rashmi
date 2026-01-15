@@ -95,11 +95,19 @@
             content: ''; position: absolute; inset: 0;
             background: rgba(253, 251, 247, 0.9);
         }
+        @keyframes cream-glow {
+            0% {
+                box-shadow: 0 30px 60px rgba(0,0,0,0.15), 0 0 20px rgba(255, 253, 208, 0.2);
+            }
+            100% {
+                box-shadow: 0 30px 60px rgba(0,0,0,0.15), 0 0 60px 15px rgba(255, 253, 208, 0.8);
+            }
+        }
+
         .invitation-frame {
-            padding: 20px; background: #fff;
             box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-            border: 10px solid #fff;
             transition: transform 0.6s ease;
+            animation: cream-glow 3s ease-in-out infinite alternate;
         }
         .invitation-frame:hover { transform: translateY(-8px); }
         .invitation-frame img {
