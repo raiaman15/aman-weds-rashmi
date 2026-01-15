@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman & Rashmi - The Wedding</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Refined Color Palette based on Invitation Card aesthetics */
+            --primary-gold: #D4AF37; /* Classic Gold */
+            --primary-dark: #2C3E50; /* Deep Elegant Navy/Charcoal */
+            --bg-cream: #FDFBF7; /* Soft Paper/Cream background */
+            --text-dark: #333333;
+            --accent-border: #E5D5B0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-dark);
+            letter-spacing: 1px;
+        }
+
+        .script-font {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary-gold);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(253, 251, 247, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent-border);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark) !important;
+            letter-spacing: 3px;
+        }
+
+        .nav-link {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dark) !important;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        /* Hero Section - No card background */
+        .hero {
+            height: 90vh;
+            background-color: var(--bg-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid var(--accent-border);
+        }
+
+        /* Elegant floral ornaments (SVG) */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+        }
+        .hero::before {
+            top: 50px;
+            left: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10 Q 50 10 50 50 Q 50 90 90 90' stroke='%23D4AF37' fill='transparent' stroke-width='1'/%3E%3C/svg%3E");
+        }
+        .hero::after {
+            bottom: 50px;
+            right: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M90 10 Q 50 10 50 50 Q 50 90 10 90' stroke='%23D4AF37' fill='transparent' stroke-width='1'/%3E%3C/svg%3E");
+        }
+
+        .hero-content h1 {
+            font-size: 5.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+            margin-top: 1rem;
+        }
+
+        /* Invitation Card Display - Shown only once */
+        .invitation-section {
+            padding: 120px 0;
+            background-color: #fff;
+        }
+
+        .card-frame {
+            padding: 20px;
+            background: #fff;
+            border: 1px solid var(--accent-border);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+            display: inline-block;
+        }
+
+        .invitation-img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #f0f0f0;
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .title-ornament {
+            width: 80px;
+            height: 1px;
+            background: var(--primary-gold);
+            margin: 20px auto;
+            position: relative;
+        }
+        .title-ornament::after {
+            content: '❦';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: var(--primary-gold);
+            padding: 0 10px;
+            background-color: transparent;
+        }
+
+        /* Details Cards */
+        .details-box {
+            background: #fff;
+            padding: 4rem 2rem;
+            border: 1px solid var(--accent-border);
+            height: 100%;
+            transition: all 0.4s ease;
+        }
+        .details-box:hover {
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Countdown */
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .countdown-item {
+            text-align: center;
+        }
+        .countdown-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--primary-dark);
+            line-height: 1;
+            font-weight: 300;
+        }
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+        }
+
+        /* RSVP Form */
+        .rsvp-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 5rem;
+            border: 1px solid var(--accent-border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        }
+
+        .form-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .form-control, .form-select {
+            border: none;
+            border-bottom: 1px solid var(--accent-border);
+            border-radius: 0;
+            padding: 0.75rem 0;
+            background-color: transparent;
+        }
+
+        .form-control:focus, .form-select:focus {
+            box-shadow: none;
+            border-bottom-color: var(--primary-gold);
+        }
+
+        .btn-elegant {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 1rem 3.5rem;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+
+        .btn-elegant:hover {
+            background-color: var(--primary-gold);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid var(--accent-border);
+            background-color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            .rsvp-container { padding: 2rem; }
+            .countdown-box { gap: 1rem; }
+            .countdown-val { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">A & R</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#invitation">The Invitation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#details">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rsvp">RSVP</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <span class="script-font" style="font-size: 2.5rem;">Save the Date</span>
+            <h1>Aman & Rashmi</h1>
+            <div class="title-ornament"></div>
+            <p class="hero-date">25 . 02 . 2026</p>
+            <p class="text-uppercase mt-4" style="letter-spacing: 4px; font-size: 0.9rem;">Gurugram, Haryana</p>
+        </div>
+    </section>
+
+    <!-- Invitation Card Section (Used once here) -->
+    <section id="invitation" class="invitation-section">
+        <div class="container text-center">
+            <div class="mb-5" data-aos="fade-up">
+                <span class="script-font" style="font-size: 2rem;">You are invited</span>
+                <h2 class="display-6 mt-2">The Official Invitation</h2>
+            </div>
+            <div class="card-frame" data-aos="zoom-in" data-aos-duration="1200">
+                <img src="wedding-invitation-card.png" alt="Aman & Rashmi Wedding Invitation" class="invitation-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="section-padding bg-white">
+        <div class="container text-center">
+            <h3 class="mb-4" style="font-style: italic;">Counting down the days...</h3>
+            <div id="timer" class="countdown-box" data-aos="fade-up">
+                <!-- Timer injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="details" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title h1">Wedding Events</h2>
+                <div class="title-ornament"></div>
+            </div>
+            
+            <div class="row g-5 justify-content-center">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="details-box text-center">
+                        <h3 class="script-font" style="font-size: 3rem;">Reception</h3>
+                        <p class="mt-4 mb-2"><strong>Wednesday, February 25, 2026</strong></p>
+                        <p>7:00 PM onwards</p>
+                        <div class="my-4"><i class="fas fa-ring text-muted"></i></div>
+                        <h4>Bliss Premiere</h4>
+                        <p class="text-muted">Sector 17A, Gurugram, Haryana</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Bliss+Premiere+Sector+17A+Gurugram" target="_blank" class="btn btn-sm btn-outline-secondary rounded-0 mt-3 px-4">View Map</a>
+                    </div>
+                </div>
+
+                <div class="col-md-5" data-aos="fade-left">
+                    <div class="details-box text-center">
+                        <h3 class="script-font" style="font-size: 3rem;">Dinner & Celebration</h3>
+                        <p class="mt-4 mb-2"><strong>Wednesday, February 25, 2026</strong></p>
+                        <p>Followed by Reception</p>
+                        <div class="my-4"><i class="fas fa-wine-glass-alt text-muted"></i></div>
+                        <p>Join us for an evening of music, dance, and a lavish dinner spread as we celebrate our new journey together.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="section-padding" style="background-color: #F8F4ED;">
+        <div class="container">
+            <div class="rsvp-container" data-aos="fade-up">
+                <div class="text-center mb-5">
+                    <h2 class="display-5">RSVP</h2>
+                    <p class="text-muted">Kindly respond by February 10, 2026</p>
+                </div>
+                
+                <form id="rsvpForm">
+                    <div class="mb-4">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Will you attend?</label>
+                        <select class="form-select" id="attending" required>
+                            <option value="" selected disabled>Select your response</option>
+                            <option value="yes">Accepts with pleasure</option>
+                            <option value="no">Declines with regret</option>
+                        </select>
+                    </div>
+                    <div class="mb-4" id="guestDiv">
+                        <label class="form-label">Number of Guests</label>
+                        <input type="number" class="form-control" id="guests" min="1" max="10" value="1">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Message (Optional)</label>
+                        <textarea class="form-control" id="message" rows="2" placeholder="Send a wish to the couple"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-elegant">Send Response</button>
+                    </div>
+                </form>
+
+                <div id="formStatus" class="mt-4 text-center d-none">
+                    <p class="alert alert-success">Thank you for your response! We look forward to seeing you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2 class="script-font" style="font-size: 3rem;">Aman & Rashmi</h2>
+            <p class="text-uppercase mt-3" style="letter-spacing: 2px; font-size: 0.8rem;">#AmanWedsRashmi</p>
+            <p class="mt-5 text-muted small">&copy; 2026 Aman & Rashmi. Built with love.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Initialization
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50
+        });
+
+        // Countdown Timer - Date: Feb 25, 2026
+        const weddingDate = new Date("Feb 25, 2026 19:00:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = `
+                <div class="countdown-item"><div class="countdown-val">${d}</div><div class="countdown-label">Days</div></div>
+                <div class="countdown-item"><div class="countdown-val">${h}</div><div class="countdown-label">Hours</div></div>
+                <div class="countdown-item"><div class="countdown-val">${m}</div><div class="countdown-label">Mins</div></div>
+                <div class="countdown-item"><div class="countdown-val">${s}</div><div class="countdown-label">Secs</div></div>
+            `;
+
+            if (diff < 0) {
+                clearInterval(timerInt);
+                document.getElementById("timer").innerHTML = "<h3>The Celebration has begun!</h3>";
+            }
+        }
+
+        const timerInt = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // RSVP Logic
+        document.getElementById('attending').addEventListener('change', function() {
+            const div = document.getElementById('guestDiv');
+            div.style.display = this.value === 'no' ? 'none' : 'block';
+        });
+
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.classList.add('d-none');
+            document.getElementById('formStatus').classList.remove('d-none');
+        });
+    </script>
+</body>
+</html>
