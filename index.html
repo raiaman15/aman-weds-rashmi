@@ -144,6 +144,10 @@
         .invitation-frame:hover img {
             transform: scale(1.02);
         }
+        .invitation-card {
+            width: 100%;
+            max-width: 950px;
+        }
 
         /* Countdown */
         .countdown-section {
@@ -222,30 +226,38 @@
 
         /* RSVP */
         .rsvp-section {
-            background: linear-gradient(135deg, var(--mood-blue), var(--mood-purple));
-            color: white;
+            background: linear-gradient(180deg, #F5F0E6 0%, var(--bg-cream) 50%, #F5F0E6 100%);
             padding: 80px 0;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
         .rsvp-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #fff;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-top: 5px solid var(--primary-gold);
             padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
         }
-        .form-control, .form-select {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
+        .rsvp-section .form-control,
+        .rsvp-section .form-select {
+            background: var(--bg-cream);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            color: var(--text-dark);
             border-radius: 0;
         }
-        .form-control:focus, .form-select:focus {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
+        .rsvp-section .form-control:focus,
+        .rsvp-section .form-select:focus {
+            background: #fff;
+            color: var(--text-dark);
             border-color: var(--primary-gold);
-            box-shadow: none;
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
         }
-        .form-control::placeholder { color: rgba(255, 255, 255, 0.5); }
-        .form-select option { background: var(--mood-blue); color: #fff; }
+        .rsvp-section .form-control::placeholder { color: rgba(44, 62, 80, 0.5); }
+        .rsvp-section .form-select option { background: #fff; color: var(--text-dark); }
+        .rsvp-section .form-label {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
         
         .btn-gold {
             background: linear-gradient(45deg, #d4af37, #c5a059);
@@ -331,9 +343,9 @@
             .timer-num { font-size: 1.8rem; }
             .timer-label { font-size: 0.6rem; letter-spacing: 1px; }
 
-            .section-padding { padding: 60px 0; }
-            .invitation-showcase { padding: 60px 0; }
-            .rsvp-section { padding: 60px 0; }
+            .section-padding,
+            .invitation-showcase,
+            .rsvp-section,
             .venue-section { padding: 60px 0; }
 
             .event-card { padding: 2rem 1.5rem; }
@@ -353,7 +365,8 @@
             .timer-num { font-size: 1.5rem; }
             .timer-label { font-size: 0.55rem; }
 
-            .invitation-frame img { max-width: 100%; }
+            .invitation-frame img,
+            .invitation-card { max-width: 100%; }
 
             .venue-section .display-5 { font-size: 1.5rem !important; }
             .venue-section .fs-5 { font-size: 1rem !important; }
@@ -415,7 +428,7 @@
             </div>
 
             <div class="invitation-frame d-inline-block mt-4" data-aos="fade-up" data-aos-delay="100">
-                <img src="assets/img/wedding-invitation-card.png" alt="Formal Invitation" class="img-fluid" style="width: 100%; max-width: 800px;" onclick="openLightbox(this.src)">
+                <img src="assets/img/wedding-invitation-card.png" alt="Formal Invitation" class="img-fluid invitation-card" onclick="openLightbox(this.src)">
             </div>
         </div>
     </section>
@@ -517,10 +530,10 @@
                     <h2 class="display-5 mb-2">Bliss Premiere</h2>
                     <div class="section-divider mb-4" style="margin-left: 0;"></div>
                     <p class="font-serif fs-5 mb-4">Sector 17A, Gurugram, Haryana</p>
-                    <p class="text-muted mb-4">In choosing this venue, your comfort has been our foremost priority. To ensure a seamless evening for all, we have arranged for spacious parking and dedicated refreshments for your drivers, so you may fully enjoy the celebration with complete peace of mind.</p>
+                    <p class="text-muted mb-4" style="text-align: justify;">In choosing this venue, your comfort has been our foremost priority. To ensure a seamless evening for all, we have arranged for spacious parking and dedicated refreshments for your drivers, so you may fully enjoy the celebration with complete peace of mind.</p>
 
-                    <a href="https://maps.google.com/maps/dir//BLISS+Premiere+Bliss+Premiere+Sukhrali+Enclave,+Sector+17A+Gurugram,+Haryana+122007/@28.4765619,77.0537435,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x390d19a9770e8597:0xd8630661a2832417" target="_blank" class="btn btn-gold rounded-0">
-                        <i class="fas fa-map-marked-alt me-2"></i> Get Directions
+                    <a href="https://maps.google.com/maps/dir//BLISS+Premiere+Bliss+Premiere+Sukhrali+Enclave,+Sector+17A+Gurugram,+Haryana+122007/@28.4765619,77.0537435,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x390d19a9770e8597:0xd8630661a2832417" target="_blank" class="btn btn-gold rounded-0 d-inline-flex align-items-center">
+                        <i class="fas fa-map-marked-alt me-2"></i> Get Directions <i class="fas fa-arrow-right ms-3"></i>
                     </a>
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
@@ -538,28 +551,28 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center mb-5" data-aos="fade-up">
-                        <span class="font-script fs-2" style="color: rgba(197, 160, 89, 0.8);">Kindly Respond</span>
-                        <h2 class="text-white">RSVP</h2>
-                        <div class="section-divider mb-3" style="background: rgba(197, 160, 89, 0.6);"></div>
-                        <p class="text-white-50">Please confirm your presence by February 10, 2026</p>
+                        <span class="font-script fs-2">Kindly Respond</span>
+                        <h2>RSVP</h2>
+                        <div class="section-divider mb-3"></div>
+                        <p class="text-muted">Please confirm your presence by February 10, 2026</p>
                     </div>
 
                     <div class="rsvp-card" data-aos="fade-up">
                         <form id="rsvpForm">
                             <div class="mb-3">
-                                <label class="form-label text-white-50 small text-uppercase ls-2">Guest Name(s)</label>
-                                <input type="text" class="form-control" required>
+                                <label class="form-label small text-uppercase ls-2">Guest Name(s)</label>
+                                <input type="text" class="form-control" placeholder="Enter your full name" required>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label text-white-50 small text-uppercase ls-2">Response</label>
+                                <label class="form-label small text-uppercase ls-2">Response</label>
                                 <select class="form-select" id="attending" required>
-                                    <option value="" selected disabled>Select...</option>
+                                    <option value="" selected disabled>Select your response...</option>
                                     <option value="yes">Joyfully Accepts</option>
                                     <option value="no">Regretfully Declines</option>
                                 </select>
                             </div>
                             <div class="mb-3" id="guestContainer">
-                                <label class="form-label text-white-50 small text-uppercase ls-2">Number of Persons</label>
+                                <label class="form-label small text-uppercase ls-2">Number of Persons</label>
                                 <select class="form-select">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -568,15 +581,15 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label text-white-50 small text-uppercase ls-2">Wishes & Blessings</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label class="form-label small text-uppercase ls-2">Wishes & Blessings</label>
+                                <textarea class="form-control" rows="3" placeholder="Share your wishes for the couple..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-gold w-100">Submit RSVP</button>
+                            <button type="submit" class="btn btn-gold w-100">Submit RSVP <i class="fas fa-paper-plane ms-2"></i></button>
                         </form>
                         <div id="successMsg" class="d-none text-center py-4">
-                            <i class="fas fa-check-circle fa-4x mb-3" style="color: var(--primary-gold);"></i>
-                            <h3 class="text-white">Thank You</h3>
-                            <p class="text-white-50">Your response has been recorded.</p>
+                            <i class="fas fa-check-circle fa-4x mb-3 text-gold"></i>
+                            <h3>Thank You</h3>
+                            <p class="text-muted">Your response has been recorded.</p>
                         </div>
                     </div>
                 </div>
