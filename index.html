@@ -224,41 +224,29 @@
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
-        /* RSVP */
-        .rsvp-section {
-            background: linear-gradient(180deg, #F5F0E6 0%, var(--bg-cream) 50%, #F5F0E6 100%);
-            padding: 80px 0;
-            border-top: 1px solid rgba(197, 160, 89, 0.2);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-        }
-        .rsvp-card {
-            background: #fff;
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            border-top: 5px solid var(--primary-gold);
-            padding: 3rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-        }
-        .rsvp-section .form-control,
-        .rsvp-section .form-select {
-            background: var(--bg-cream);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            color: var(--text-dark);
+        /* RSVP Modal */
+        .rsvp-modal .modal-content {
+            background-color: var(--bg-cream);
+            border: none;
             border-radius: 0;
+            border-top: 4px solid var(--primary-gold);
         }
-        .rsvp-section .form-control:focus,
-        .rsvp-section .form-select:focus {
+        .rsvp-modal .modal-header {
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 1.5rem 2rem;
+        }
+        .rsvp-modal .modal-body {
+            padding: 0;
+        }
+        .rsvp-modal iframe {
+            display: block;
+            width: 100%;
+            min-height: 500px;
+            height: 70vh;
+            border: none;
             background: #fff;
-            color: var(--text-dark);
-            border-color: var(--primary-gold);
-            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
         }
-        .rsvp-section .form-control::placeholder { color: rgba(44, 62, 80, 0.5); }
-        .rsvp-section .form-select option { background: #fff; color: var(--text-dark); }
-        .rsvp-section .form-label {
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-        
+
         .btn-gold {
             background: linear-gradient(45deg, #d4af37, #c5a059);
             color: white; padding: 1rem 3rem;
@@ -345,11 +333,9 @@
 
             .section-padding,
             .invitation-showcase,
-            .rsvp-section,
             .venue-section { padding: 60px 0; }
 
             .event-card { padding: 2rem 1.5rem; }
-            .rsvp-card { padding: 2rem 1.5rem; }
 
             .btn-gold { padding: 0.75rem 2rem; font-size: 0.85rem; }
             .btn-outline-gold { padding: 0.6rem 1.5rem; font-size: 0.75rem; }
@@ -392,7 +378,7 @@
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#invitation">Invitation</a></li>
                     <li class="nav-item"><a class="nav-link" href="#events">Program</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#rsvp">RSVP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rsvpModal">RSVP</a></li>
                 </ul>
             </div>
         </div>
@@ -500,22 +486,20 @@
 
                 <!-- Card 3: Reception -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <a href="#rsvp" class="text-decoration-none text-dark">
-                        <div class="event-card text-center">
-                            <div class="mb-4">
-                                <i class="fas fa-glass-cheers text-gold display-4"></i>
-                            </div>
-                            <h3 class="h2 mb-3">Reception</h3>
-                            <div class="d-flex justify-content-center align-items-center mb-3">
-                                <span class="text-uppercase ls-2 small fw-bold">Feb 25</span>
-                                <span class="mx-2 text-gold">•</span>
-                                <span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
-                            </div>
-                            <p class="font-serif fs-5 text-muted mb-4 fst-italic">"An evening of dinner, dance & delight."</p>
-                            <p class="small text-muted mb-4">Join us for a night of celebration and feasting with friends and family.</p>
-                            <span class="text-gold small fw-bold text-uppercase ls-1">Click to RSVP</span>
+                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#rsvpModal" style="cursor: pointer;">
+                        <div class="mb-4">
+                            <i class="fas fa-glass-cheers text-gold display-4"></i>
                         </div>
-                    </a>
+                        <h3 class="h2 mb-3">Reception</h3>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span>
+                            <span class="mx-2 text-gold">•</span>
+                            <span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
+                        </div>
+                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"An evening of dinner, dance & delight."</p>
+                        <p class="small text-muted mb-4">Join us for a night of celebration and feasting with friends and family.</p>
+                        <span class="text-gold small fw-bold text-uppercase ls-1">Click to RSVP</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -539,58 +523,6 @@
                 <div class="col-lg-7" data-aos="fade-left">
                     <div class="ratio ratio-16x9 shadow-lg" style="border: 3px solid var(--primary-gold);">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.099105537008!2d77.05116857549513!3d28.47656187575024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19a9770e8597%3A0xd8630661a2832417!2sBLISS%20Premiere!5e0!3m2!1sen!2sin!4v1768485992910!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RSVP -->
-    <section id="rsvp" class="rsvp-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="text-center mb-5" data-aos="fade-up">
-                        <span class="font-script fs-2">Kindly Respond</span>
-                        <h2>RSVP</h2>
-                        <div class="section-divider mb-3"></div>
-                        <p class="text-muted">Please confirm your presence by February 10, 2026</p>
-                    </div>
-
-                    <div class="rsvp-card" data-aos="fade-up">
-                        <form id="rsvpForm">
-                            <div class="mb-3">
-                                <label class="form-label small text-uppercase ls-2">Guest Name(s)</label>
-                                <input type="text" class="form-control" placeholder="Enter your full name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label small text-uppercase ls-2">Response</label>
-                                <select class="form-select" id="attending" required>
-                                    <option value="" selected disabled>Select your response...</option>
-                                    <option value="yes">Joyfully Accepts</option>
-                                    <option value="no">Regretfully Declines</option>
-                                </select>
-                            </div>
-                            <div class="mb-3" id="guestContainer">
-                                <label class="form-label small text-uppercase ls-2">Number of Persons</label>
-                                <select class="form-select">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label small text-uppercase ls-2">Wishes & Blessings</label>
-                                <textarea class="form-control" rows="3" placeholder="Share your wishes for the couple..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-gold w-100">Submit RSVP <i class="fas fa-paper-plane ms-2"></i></button>
-                        </form>
-                        <div id="successMsg" class="d-none text-center py-4">
-                            <i class="fas fa-check-circle fa-4x mb-3 text-gold"></i>
-                            <h3>Thank You</h3>
-                            <p class="text-muted">Your response has been recorded.</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -643,6 +575,23 @@
         </div>
     </div>
 
+    <!-- RSVP Modal with Google Form -->
+    <div class="modal fade rsvp-modal" id="rsvpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="text-center w-100">
+                        <span class="font-script fs-3">We would be honored by your presence</span>
+                    </div>
+                    <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1rem;" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="rsvpFormFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true&usp=sf_link" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Loading…</iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -672,21 +621,14 @@
             `;
         }, 1000);
 
-        // RSVP Handler
-        const attending = document.getElementById('attending');
-        const guests = document.getElementById('guestContainer');
-        
-        attending.addEventListener('change', function() {
-            guests.style.opacity = this.value === 'no' ? '0.5' : '1';
-            guests.style.pointerEvents = this.value === 'no' ? 'none' : 'auto';
-        });
+        // RSVP Modal - Show on page load
+        const rsvpModal = document.getElementById('rsvpModal');
 
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            this.style.display = 'none';
-            const msg = document.getElementById('successMsg');
-            msg.classList.remove('d-none');
-            msg.classList.add('animate__animated', 'animate__fadeIn');
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const modal = new bootstrap.Modal(rsvpModal);
+                modal.show();
+            }, 1500);
         });
 
         // Lightbox Logic
