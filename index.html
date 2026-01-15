@@ -46,8 +46,35 @@
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
         .navbar.scrolled { padding: 0.5rem 0; background: rgba(255, 255, 255, 0.98); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .navbar-brand { font-family: 'Cinzel', serif; font-weight: 700; color: var(--text-dark); }
-        .nav-link { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dark) !important; font-weight: 500; }
+        .navbar-brand {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+        .navbar-brand:hover { color: var(--primary-gold); }
+        .nav-link {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-link:hover { color: var(--primary-gold) !important; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after { width: 100%; }
 
         /* Hero */
         .hero {
@@ -87,7 +114,7 @@
 
         /* Invitation */
         .invitation-showcase {
-            padding: 100px 0;
+            padding: 80px 0;
             position: relative;
             background: url('assets/img/venue-day.png') center/cover fixed;
         }
@@ -196,7 +223,8 @@
         /* RSVP */
         .rsvp-section {
             background: linear-gradient(135deg, var(--mood-blue), var(--mood-purple));
-            color: white; padding: 100px 0;
+            color: white;
+            padding: 80px 0;
         }
         .rsvp-card {
             background: rgba(255, 255, 255, 0.05);
@@ -208,8 +236,16 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
+            border-radius: 0;
         }
-        .form-control:focus { background: rgba(255, 255, 255, 0.2); color: #fff; border-color: var(--primary-gold); box-shadow: none; }
+        .form-control:focus, .form-select:focus {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-color: var(--primary-gold);
+            box-shadow: none;
+        }
+        .form-control::placeholder { color: rgba(255, 255, 255, 0.5); }
+        .form-select option { background: var(--mood-blue); color: #fff; }
         
         .btn-gold {
             background: linear-gradient(45deg, #d4af37, #c5a059);
@@ -261,14 +297,66 @@
             to { transform: scale(1); opacity: 1; }
         }
 
+        /* Section Consistency */
+        .section-padding {
+            padding: 80px 0;
+        }
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--primary-gold);
+            margin: 1rem auto 0;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            border-top: 3px solid var(--primary-gold);
+        }
+
         /* Mobile */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .hero-content { padding: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-content { padding: 1.5rem; margin: 0 1rem; }
+            .hero-date-box { padding: 0.5rem 1.5rem; }
+            .font-script.fs-1 { font-size: 1.5rem !important; }
+            .font-script.fs-2 { font-size: 1.3rem !important; }
+            .display-5, .display-6 { font-size: 1.75rem !important; }
+
             .timer-box { min-width: 70px; padding: 1rem 0.5rem; }
             .timer-box::before { width: 25px; height: 2px; }
             .timer-num { font-size: 1.8rem; }
             .timer-label { font-size: 0.6rem; letter-spacing: 1px; }
+
+            .section-padding { padding: 60px 0; }
+            .invitation-showcase { padding: 60px 0; }
+            .rsvp-section { padding: 60px 0; }
+            .venue-section { padding: 60px 0; }
+
+            .event-card { padding: 2rem 1.5rem; }
+            .rsvp-card { padding: 2rem 1.5rem; }
+
+            .btn-gold { padding: 0.75rem 2rem; font-size: 0.85rem; }
+            .btn-outline-gold { padding: 0.6rem 1.5rem; font-size: 0.75rem; }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-content { padding: 1.25rem; }
+            .hero-date-box { padding: 0.4rem 1rem; }
+            .hero-date-box .fs-4 { font-size: 0.9rem !important; }
+
+            .timer-box { min-width: 60px; padding: 0.75rem 0.25rem; }
+            .timer-num { font-size: 1.5rem; }
+            .timer-label { font-size: 0.55rem; }
+
+            .invitation-frame img { max-width: 100%; }
+
+            .venue-section .display-5 { font-size: 1.5rem !important; }
+            .venue-section .fs-5 { font-size: 1rem !important; }
         }
     </style>
 </head>
@@ -320,19 +408,20 @@
     <!-- Invitation Display -->
     <section id="invitation" class="invitation-showcase">
         <div class="container text-center" style="position: relative; z-index: 2;">
-            <div data-aos="fade-up">
-                <span class="font-script text-gold fs-2">We Request the Honor of Your Presence at</span>
-                <h2 class="mb-5 mt-2">The Wedding Reception</h2>
-                
-                <div class="invitation-frame d-inline-block">
-                    <img src="wedding-invitation-card.png" alt="Formal Invitation" class="img-fluid" style="width: 100%; max-width: 800px;" onclick="openLightbox(this.src)">
-                </div>
+            <div class="section-header" data-aos="fade-up">
+                <span class="font-script fs-2">We Request the Honor of Your Presence at</span>
+                <h2 class="mt-2">The Wedding Reception</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="invitation-frame d-inline-block mt-4" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/img/wedding-invitation-card.png" alt="Formal Invitation" class="img-fluid" style="width: 100%; max-width: 800px;" onclick="openLightbox(this.src)">
             </div>
         </div>
     </section>
 
     <!-- Countdown -->
-    <section class="countdown-section py-5">
+    <section class="countdown-section section-padding">
         <div class="container text-center">
             <div data-aos="fade-up">
                 <span class="font-script fs-2 text-gold">Save the Date</span>
@@ -351,7 +440,7 @@
     </section>
 
     <!-- Program -->
-    <section id="events" class="py-5 my-5">
+    <section id="events" class="section-padding">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="font-script fs-2 text-gold">The Itinerary</span>
@@ -424,17 +513,18 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
-                    <span class="font-script fs-2 text-gold">The Location</span>
-                    <h2 class="display-5 mb-4">Bliss Premiere</h2>
+                    <span class="font-script fs-2">The Location</span>
+                    <h2 class="display-5 mb-2">Bliss Premiere</h2>
+                    <div class="section-divider mb-4" style="margin-left: 0;"></div>
                     <p class="font-serif fs-5 mb-4">Sector 17A, Gurugram, Haryana</p>
                     <p class="text-muted mb-4">In choosing this venue, your comfort has been our foremost priority. To ensure a seamless evening for all, we have arranged for spacious parking and dedicated refreshments for your drivers, so you may fully enjoy the celebration with complete peace of mind.</p>
-                    
-                    <a href="https://maps.google.com/maps/dir//BLISS+Premiere+Bliss+Premiere+Sukhrali+Enclave,+Sector+17A+Gurugram,+Haryana+122007/@28.4765619,77.0537435,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x390d19a9770e8597:0xd8630661a2832417" target="_blank" class="btn btn-gold btn-lg text-white rounded-0 px-5 py-3">
+
+                    <a href="https://maps.google.com/maps/dir//BLISS+Premiere+Bliss+Premiere+Sukhrali+Enclave,+Sector+17A+Gurugram,+Haryana+122007/@28.4765619,77.0537435,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x390d19a9770e8597:0xd8630661a2832417" target="_blank" class="btn btn-gold rounded-0">
                         <i class="fas fa-map-marked-alt me-2"></i> Get Directions
                     </a>
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
-                    <div class="ratio ratio-16x9 shadow border border-3 border-white">
+                    <div class="ratio ratio-16x9 shadow-lg" style="border: 3px solid var(--primary-gold);">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.099105537008!2d77.05116857549513!3d28.47656187575024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19a9770e8597%3A0xd8630661a2832417!2sBLISS%20Premiere!5e0!3m2!1sen!2sin!4v1768485992910!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
@@ -448,9 +538,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center mb-5" data-aos="fade-up">
-                        <span class="font-script text-white-50 fs-2">Kindly Respond</span>
+                        <span class="font-script fs-2" style="color: rgba(197, 160, 89, 0.8);">Kindly Respond</span>
                         <h2 class="text-white">RSVP</h2>
-                        <p class="text-white-50 mt-2">Please confirm your presence by February 10, 2026</p>
+                        <div class="section-divider mb-3" style="background: rgba(197, 160, 89, 0.6);"></div>
+                        <p class="text-white-50">Please confirm your presence by February 10, 2026</p>
                     </div>
 
                     <div class="rsvp-card" data-aos="fade-up">
@@ -483,7 +574,7 @@
                             <button type="submit" class="btn btn-gold w-100">Submit RSVP</button>
                         </form>
                         <div id="successMsg" class="d-none text-center py-4">
-                            <i class="fas fa-check-circle fa-4x mb-3 text-warning"></i>
+                            <i class="fas fa-check-circle fa-4x mb-3" style="color: var(--primary-gold);"></i>
                             <h3 class="text-white">Thank You</h3>
                             <p class="text-white-50">Your response has been recorded.</p>
                         </div>
@@ -493,9 +584,10 @@
         </div>
     </section>
 
-    <footer class="text-center py-5 bg-dark text-muted">
+    <footer class="site-footer text-center py-5 text-muted">
         <div class="container">
-            <h2 class="font-script text-white mb-3 display-4">Aman & Rashmi</h2>
+            <h2 class="font-script text-white mb-2 display-4">Aman & Rashmi</h2>
+            <div class="section-divider mb-3"></div>
             <p class="small text-uppercase ls-2 mb-0">#AmanWedsRashmi • 2026</p>
         </div>
     </footer>
@@ -503,18 +595,17 @@
     <!-- Haldi Modal -->
     <div class="modal fade" id="haldiModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream);">
-                <div class="modal-header border-bottom border-warning">
+            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                <div class="modal-header border-0">
                     <h5 class="modal-title font-serif fw-bold text-gold">Haldi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center p-5">
-                    <i class="fas fa-sun display-4 text-warning mb-4"></i>
-                    <p class="font-serif fs-5 mb-3">"A splash of turmeric, a glow of love."</p>
+                <div class="modal-body text-center px-4 pb-5">
+                    <i class="fas fa-sun display-4 text-gold mb-4"></i>
+                    <p class="font-serif fs-5 mb-3 fst-italic">"A splash of turmeric, a glow of love."</p>
                     <p class="text-muted">The Haldi ceremony is a pre-wedding ritual where turmeric paste is applied to the bride and groom. It is believed to bless the couple with glowing skin and ward off evil spirits. Join us for this fun-filled, vibrant yellow celebration!</p>
-                    <div class="mt-4 pt-3 border-top border-warning w-50 mx-auto">
-                        <p class="mb-0 fw-bold small text-uppercase ls-2">Dress Code: Yellow Traditional</p>
-                    </div>
+                    <div class="section-divider my-4"></div>
+                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Yellow Traditional</p>
                 </div>
             </div>
         </div>
@@ -523,18 +614,17 @@
     <!-- Wedding Modal -->
     <div class="modal fade" id="weddingModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream);">
-                <div class="modal-header border-bottom border-danger">
-                    <h5 class="modal-title font-serif fw-bold text-danger">Wedding</h5>
+            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-serif fw-bold text-gold">Wedding Ceremony</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center p-5">
-                    <i class="fas fa-vihara display-4 text-danger mb-4"></i>
-                    <p class="font-serif fs-5 mb-3">"Two souls, one heart, forever united."</p>
+                <div class="modal-body text-center px-4 pb-5">
+                    <i class="fas fa-vihara display-4 text-gold mb-4"></i>
+                    <p class="font-serif fs-5 mb-3 fst-italic">"Two souls, one heart, forever united."</p>
                     <p class="text-muted">The wedding ceremony marks the sacred union of two souls. We will take our vows around the holy fire (Agni) in the presence of our loved ones. Your presence and blessings are what we cherish the most.</p>
-                    <div class="mt-4 pt-3 border-top border-danger w-50 mx-auto">
-                        <p class="mb-0 fw-bold small text-uppercase ls-2">Dress Code: Traditional / Formal</p>
-                    </div>
+                    <div class="section-divider my-4"></div>
+                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
                 </div>
             </div>
         </div>
