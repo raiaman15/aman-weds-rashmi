@@ -505,7 +505,7 @@
             </div>
 
             <div class="invitation-frame d-inline-block mt-4" data-aos="fade-up" data-aos-delay="100">
-                <img src="assets/img/wedding-invitation-card.png" alt="Formal Invitation" class="img-fluid invitation-card" onclick="openLightbox(this.src)">
+                <img src="assets/img/wedding-invitation-boy.png" alt="Formal Invitation" class="img-fluid invitation-card" id="invitationCard" onclick="openLightbox(this.src)">
             </div>
         </div>
     </section>
@@ -869,25 +869,16 @@
             document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Name Swapping Logic based on 's' query param
+        // Initialize and handle dynamic content
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const side = urlParams.get('s');
+            let events = urlParams.get('e') || 'w'; // Default to Wedding
             
-            // Event Filtering Logic
-            let events = urlParams.get('e');
-            if (!events) {
-                events = 'w'; // Default to Wedding only if 'e' is absent or empty
-            }
-            
+            // 1. Event Filtering Logic
             const eventMap = {
-                'm': 'event-m',
-                'h': 'event-h',
-                's': 'event-s',
-                'b': 'event-b',
-                'w': 'event-w',
-                'r': 'event-r',
-                'v': 'event-v'
+                'm': 'event-m', 'h': 'event-h', 's': 'event-s', 
+                'b': 'event-b', 'w': 'event-w', 'r': 'event-r', 'v': 'event-v'
             };
 
             for (const [char, id] of Object.entries(eventMap)) {
@@ -901,32 +892,47 @@
                 }
             }
 
+            // 2. Name Swapping and Image Selection Logic
+            const invitationImg = document.getElementById('invitationCard');
+            const boyName = "Aman";
+            const girlName = "Rashmi";
+            
+            let firstPartner = boyName;
+            let secondPartner = girlName;
+            let initials = "A & R";
+            let invitationSrc = "assets/img/wedding-invitation-boy.png";
+            let socialImg = "assets/img/social-preview.jpg";
+
             if (side === 'g') {
-                const boyName = "Aman";
-                const girlName = "Rashmi";
-                const fullTitle = `${girlName} & ${boyName}`;
-                const shortTitle = "R & A";
-                const hashtag = `#${girlName}Weds${boyName}`;
-                const description = `Wedding Celebration of ${girlName} & ${boyName} | February 25, 2026`;
-
-                // Update DOM elements
-                document.getElementById('navNames').textContent = shortTitle;
-                document.getElementById('heroNames').textContent = fullTitle;
-                document.getElementById('footerNames').textContent = fullTitle;
-                document.getElementById('footerHashtag').textContent = hashtag;
-
-                // Update Page Title
-                document.title = `The Wedding of ${fullTitle}`;
-
-                // Update Meta Tags
-                document.querySelector('meta[name="description"]').setAttribute("content", description);
-                document.querySelector('meta[property="og:title"]').setAttribute("content", `The Wedding of ${fullTitle}`);
-                document.querySelector('meta[property="og:description"]').setAttribute("content", description);
-                document.querySelector('meta[property="twitter:title"]').setAttribute("content", `The Wedding of ${fullTitle}`);
-                document.querySelector('meta[property="twitter:description"]').setAttribute("content", description);
+                firstPartner = girlName;
+                secondPartner = boyName;
+                initials = "R & A";
+                invitationSrc = "assets/img/wedding-invitation-girl.jpg";
+                socialImg = invitationSrc;
             }
 
-            // Refresh AOS animations after layout changes
+            const fullTitle = `${firstPartner} & ${secondPartner}`;
+            const hashtag = `#${girlName}Weds${boyName}`;
+            const description = `Wedding Celebration of ${fullTitle} | February 25, 2026`;
+
+            // Update DOM elements
+            if (invitationImg) invitationImg.src = invitationSrc;
+            document.getElementById('navNames').textContent = initials;
+            document.getElementById('heroNames').textContent = fullTitle;
+            document.getElementById('footerNames').textContent = fullTitle;
+            document.getElementById('footerHashtag').textContent = hashtag;
+
+            // Update Page Metadata
+            document.title = `The Wedding of ${fullTitle}`;
+            document.querySelector('meta[name="description"]').setAttribute("content", description);
+            document.querySelector('meta[property="og:title"]').setAttribute("content", `The Wedding of ${fullTitle}`);
+            document.querySelector('meta[property="og:description"]').setAttribute("content", description);
+            document.querySelector('meta[property="og:image"]').setAttribute("content", `https://amanwedsrashmi.infroid.in/${socialImg}`);
+            document.querySelector('meta[property="twitter:title"]').setAttribute("content", `The Wedding of ${fullTitle}`);
+            document.querySelector('meta[property="twitter:description"]').setAttribute("content", description);
+            document.querySelector('meta[property="twitter:image"]').setAttribute("content", `https://amanwedsrashmi.infroid.in/${socialImg}`);
+
+            // 3. Refresh AOS animations after layout changes
             setTimeout(() => {
                 if (typeof AOS !== 'undefined') {
                     AOS.refresh();
