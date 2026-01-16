@@ -667,6 +667,9 @@
         </div>
     </div>
 
+    <!-- Hidden Preload Container -->
+    <div id="rsvp-preload-container" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true"></div>
+
     <!-- RSVP Modal with Google Form -->
     <div class="modal fade rsvp-modal" id="rsvpModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -678,7 +681,12 @@
                     <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1rem;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="rsvpModalBody">
-                    <!-- Form will be moved here from preload -->
+                    <div id="rsvp-loader" class="text-center py-5">
+                        <div class="spinner-border text-gold" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2 text-muted small">Loading RSVP Form...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -716,6 +724,7 @@
         // RSVP Modal - Check for Chromium browser
         const rsvpModal = document.getElementById('rsvpModal');
         const rsvpModalBody = document.getElementById('rsvpModalBody');
+        const preloadContainer = document.getElementById('rsvp-preload-container');
 
         // Detect if browser is Chromium-based
         function isChromiumBrowser() {
@@ -747,6 +756,19 @@
                         localStorage.setItem('rsvpFormClicked', 'true');
                     });
                 }
+            } else {
+                // Chromium: Preload the iframe immediately
+                const iframe = document.createElement('iframe');
+                iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true";
+                iframe.style.width = "100%";
+                iframe.style.minHeight = "500px";
+                iframe.style.height = "70vh";
+                iframe.style.border = "none";
+                iframe.style.background = "#fff";
+                iframe.style.display = "block";
+                iframe.referrerPolicy = "no-referrer";
+                iframe.id = "rsvp-iframe";
+                preloadContainer.appendChild(iframe);
             }
         }
 
@@ -756,16 +778,23 @@
         // Load iframe when modal shows (for Chromium browsers)
         rsvpModal.addEventListener('show.bs.modal', function () {
             if (isChromiumBrowser()) {
-                // Check if iframe already exists
-                if (!rsvpModalBody.querySelector('iframe')) {
+                const preloadedIframe = document.getElementById('rsvp-iframe');
+                const loader = document.getElementById('rsvp-loader');
+                
+                if (preloadedIframe && preloadContainer.contains(preloadedIframe)) {
+                    // Move preloaded iframe to modal
+                    if (loader) loader.style.display = 'none';
+                    rsvpModalBody.appendChild(preloadedIframe);
+                } else if (!rsvpModalBody.querySelector('iframe')) {
+                    // Fallback: Create if not preloaded (shouldn't happen usually)
+                    if (loader) loader.style.display = 'none';
+                    // Re-run setup logic or create new
                     const iframe = document.createElement('iframe');
-                    iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true&usp=sf_link";
+                    iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true";
                     iframe.style.width = "100%";
-                    iframe.style.minHeight = "500px";
                     iframe.style.height = "70vh";
                     iframe.style.border = "none";
-                    iframe.style.background = "#fff";
-                    iframe.style.display = "block";
+                    iframe.referrerPolicy = "no-referrer";
                     rsvpModalBody.appendChild(iframe);
                 }
             }
@@ -796,7 +825,7 @@
                     // Increment and save count
                     dailyCount++;
                     localStorage.setItem(storageKeyCount, dailyCount);
-                }, 3000);
+                }, 5000);
             }
         });
 
