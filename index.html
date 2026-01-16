@@ -1056,34 +1056,6 @@
             }
         });
 
-        window.addEventListener('load', function() {
-            // Logic: Show popup for the first 3 times each day
-            const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-            const storageKeyDate = 'rsvpPopupDate';
-            const storageKeyCount = 'rsvpPopupDailyCount';
-
-            let storedDate = localStorage.getItem(storageKeyDate);
-            let dailyCount = parseInt(localStorage.getItem(storageKeyCount)) || 0;
-
-            // Reset count if it's a new day
-            if (storedDate !== today) {
-                dailyCount = 0;
-                localStorage.setItem(storageKeyDate, today);
-                localStorage.setItem(storageKeyCount, dailyCount);
-            }
-
-            // Show popup if count is less than 3
-            if (dailyCount < 3) {
-                setTimeout(function() {
-                    const modal = new bootstrap.Modal(rsvpModal);
-                    modal.show();
-                    
-                    // Increment and save count
-                    dailyCount++;
-                    localStorage.setItem(storageKeyCount, dailyCount);
-                }, 5000);
-            }
-        });
 
         // Lightbox Logic
         const lightbox = document.getElementById('lightbox');
