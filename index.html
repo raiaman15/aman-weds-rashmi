@@ -886,7 +886,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             const sideParam = urlParams.get('s');
             const side = (sideParam === 'g') ? 'g' : 'b'; // Default to 'b' (boy)
-            const eventsParam = urlParams.get('e') || 'w'; // Default to Wedding
+            const defaultEvents = (side === 'g') ? 'wr' : 'r'; // Girl: Wedding+Reception, Boy: Reception
+            const eventsParam = urlParams.get('e') || defaultEvents;
 
             // 1. Filter events by side and requested event IDs
             const filteredEvents = eventsData.filter(event =>
