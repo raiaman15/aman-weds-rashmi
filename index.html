@@ -233,6 +233,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
         .event-card:hover::after { width: 100%; }
+        .modal-body a.text-reset:hover { color: var(--primary-gold) !important; }
         
         /* Venue Section */
         .venue-section {
@@ -538,219 +539,12 @@
                 <div class="mx-auto mt-3" style="width: 60px; height: 2px; background: var(--primary-gold);"></div>
             </div>
 
-            <div class="row g-4 justify-content-center">
-                <!-- === BOY'S SIDE CARDS === -->
-                
-                <!-- Mehandi (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-b-m">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#mehandiModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-hands text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Mehandi</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">10:00 AM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"Intricate designs, timeless love."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Gana (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150" id="event-b-g">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#ganaModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-user-shield text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Gana</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">12:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"Sacred threads of protection & love."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Haldi (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" id="event-b-h">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#haldiModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-sun text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Haldi</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">12:30 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A splash of turmeric, a glow of love."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Sangeet (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300" id="event-b-s">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#sangeetModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-music text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Sangeet</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A night of rhythm, dance, and joy."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- === GIRL'S SIDE CARDS === -->
-
-                <!-- Mehandi (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-g-m">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#mehandiModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-hands text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Mehandi</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">10:00 AM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"Intricate designs, timeless love."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Gana (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150" id="event-g-g">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#ganaModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-user-shield text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Gana</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">12:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"Sacred threads of protection & love."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Haldi (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" id="event-g-h">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#haldiModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-sun text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Haldi</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">12:30 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A splash of turmeric, a glow of love."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Sangeet (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300" id="event-g-s">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#sangeetModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-music text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Sangeet</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A night of rhythm, dance, and joy."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Baraat (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-b-b">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#baraatModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-horse text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Baraat</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">03:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"The grand arrival of the groom."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Wedding (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" id="event-b-w">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#weddingModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-vihara text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Wedding</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">04:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"Two souls, one heart, forever united."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Reception (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300" id="event-b-r">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#receptionModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-glass-cheers text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Reception</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"An evening of dinner, dance & delight."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Vidaai (Boy) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-b-v">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#vidaaiModal-b" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-door-open text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Vidaai</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 26</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">10:00 AM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A bittersweet farewell to a new beginning."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Baraat (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-g-b">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#baraatModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-horse text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Baraat</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">03:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"The grand arrival of the groom."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Wedding (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" id="event-g-w">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#weddingModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-vihara text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Wedding</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">04:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"Two souls, one heart, forever united."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Reception (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300" id="event-g-r">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#receptionModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-glass-cheers text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Reception</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"An evening of dinner, dance & delight."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
-
-                <!-- Vidaai (Girl) -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-g-v">
-                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#vidaaiModal-g" style="cursor: pointer;">
-                        <div class="mb-4"><i class="fas fa-door-open text-gold display-4"></i></div>
-                        <h3 class="h2 mb-3">Vidaai</h3>
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <span class="text-uppercase ls-2 small fw-bold">Feb 26</span><span class="mx-2 text-gold">•</span><span class="text-uppercase ls-2 small fw-bold">10:00 AM</span>
-                        </div>
-                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A bittersweet farewell to a new beginning."</p>
-                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
-                    </div>
-                </div>
+            <div class="row g-4 justify-content-center" id="eventsContainer">
+                <!-- Events will be dynamically generated from JSON -->
             </div>
+
+            <!-- Dynamic modals container -->
+            <div id="modalsContainer"></div>
         </div>
     </section>
 
@@ -785,330 +579,6 @@
             <p class="small ls-2 mb-0" style="color: rgba(255,255,255,0.6);" id="footerHashtag">#AmanWedsRashmi</p>
         </div>
     </footer>
-
-    <!-- === BOY'S SIDE MODALS === -->
-
-    <!-- Haldi Modal (Boy) -->
-    <div class="modal fade" id="haldiModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Haldi (Boy's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-sun display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"A splash of turmeric, a glow of love."</p>
-                    <p class="text-muted">The pre-wedding ritual of applying turmeric paste to the groom. It is believed to bless him with glowing skin and ward off evil spirits.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Leaf9 Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Yellow Traditional</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mehandi Modal (Boy) -->
-    <div class="modal fade" id="mehandiModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Mehandi (Boy's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-hands display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"Intricate designs, timeless love."</p>
-                    <p class="text-muted">Join us for the Mehandi ceremony celebrating the groom.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Leaf9 Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Vibrant Traditional</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Gana Modal (Boy) -->
-    <div class="modal fade" id="ganaModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Gana (Boy's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-user-shield display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"Sacred threads of protection & love."</p>
-                    <p class="text-muted">A ritual tying of the sacred thread (Mouli) on the groom's wrist to symbolize protection and blessings.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Leaf9 Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sangeet Modal (Boy) -->
-    <div class="modal fade" id="sangeetModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Sangeet (Boy's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-music display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"A night of rhythm, dance, and joy."</p>
-                    <p class="text-muted">An evening filled with music and performances by the groom's family and friends.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Leaf9 Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Festive / Glamorous</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Baraat Modal (Boy) -->
-    <div class="modal fade" id="baraatModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Baraat</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-horse display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"The grand arrival."</p>
-                    <p class="text-muted">The groom's wedding procession.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Wedding Modal (Boy) -->
-    <div class="modal fade" id="weddingModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Wedding Ceremony</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-vihara display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"Two souls, one heart, forever united."</p>
-                    <p class="text-muted">The sacred union.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Reception Modal (Boy) -->
-    <div class="modal fade" id="receptionModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Reception</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-glass-cheers display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"An evening of dinner, dance & delight."</p>
-                    <p class="text-muted">Join us for a night of celebration.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vidaai Modal (Boy) -->
-    <div class="modal fade" id="vidaaiModal-b" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Vidaai</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-door-open display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"A new beginning."</p>
-                    <p class="text-muted">The emotional farewell.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- === GIRL'S SIDE MODALS === -->
-
-    <!-- Haldi Modal (Girl) -->
-    <div class="modal fade" id="haldiModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Haldi (Girl's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-sun display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"A splash of turmeric, a glow of love."</p>
-                    <p class="text-muted">The pre-wedding ritual of applying turmeric paste to the bride. It is believed to bless her with glowing skin and ward off evil spirits.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Galgotia Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Yellow Traditional</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mehandi Modal (Girl) -->
-    <div class="modal fade" id="mehandiModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Mehandi (Girl's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-hands display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"Intricate designs, timeless love."</p>
-                    <p class="text-muted">The Mehandi ceremony is where beautiful henna designs are applied to the bride's hands and feet.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Galgotia Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Vibrant Traditional</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Gana Modal (Girl) -->
-    <div class="modal fade" id="ganaModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Gana (Girl's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-user-shield display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"Sacred threads of protection & love."</p>
-                    <p class="text-muted">A ritual tying of the sacred thread (Mouli) on the bride's wrist to symbolize protection and blessings.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Galgotia Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sangeet Modal (Girl) -->
-    <div class="modal fade" id="sangeetModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Sangeet (Girl's Side)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-music display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"A night of rhythm, dance, and joy."</p>
-                    <p class="text-muted">An evening filled with music and performances by the bride's family and friends.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Galgotia Hotel, Sector 23, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Festive / Glamorous</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Baraat Modal (Girl) -->
-    <div class="modal fade" id="baraatModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Baraat</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-horse display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"The grand arrival."</p>
-                    <p class="text-muted">Welcoming the groom's procession.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Wedding Modal (Girl) -->
-    <div class="modal fade" id="weddingModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Wedding Ceremony</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-vihara display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"Two souls, one heart, forever united."</p>
-                    <p class="text-muted">The sacred union where we take our vows in the presence of the holy fire.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Reception Modal (Girl) -->
-    <div class="modal fade" id="receptionModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Reception</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-glass-cheers display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"An evening of dinner, dance & delight."</p>
-                    <p class="text-muted">Join us for a night of celebration and feasting with friends and family.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vidaai Modal (Girl) -->
-    <div class="modal fade" id="vidaaiModal-g" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title font-serif fw-bold text-gold">Vidaai</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center px-4 pb-5">
-                    <i class="fas fa-door-open display-4 text-gold mb-4"></i>
-                    <p class="font-serif fs-5 mb-3 fst-italic">"A bittersweet farewell to a new beginning."</p>
-                    <p class="text-muted">The emotional ceremony where the bride bids farewell to her family as she starts her new life.</p>
-                    <p class="small text-muted fw-bold mt-2"><i class="fas fa-map-marker-alt me-2"></i>Location: Bliss Premiere, Sector 17A, Gurugram</p>
-                    <div class="section-divider my-4"></div>
-                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Hidden Preload Container -->
     <div id="rsvp-preload-container" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true"></div>
@@ -1146,39 +616,306 @@
             document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
         });
 
+        // Events JSON Data - Array of all events with side indicator
+        const eventsData = [
+            // Boy's Side Events
+            {
+                id: "h",
+                side: "b",
+                name: "Haldi",
+                icon: "fa-sun",
+                quote: "A splash of turmeric, a glow of love.",
+                date: "Feb 24",
+                time: "12:00 PM",
+                modalTitle: "Haldi",
+                description: "The pre-wedding ritual of applying turmeric paste to the groom. It is believed to bless him with glowing skin and ward off evil spirits.",
+                location: "Leaf9, Sector 23, Gurugram",
+                mapLink: "https://maps.app.goo.gl/qz9fMszj9NWvhp1y7",
+                dressCode: "Yellow Traditional"
+            },
+            {
+                id: "s",
+                side: "b",
+                name: "Sangeet",
+                icon: "fa-music",
+                quote: "A night of rhythm, dance, and joy.",
+                date: "Feb 24",
+                time: "06:00 PM",
+                modalTitle: "Sangeet",
+                description: "An evening filled with music and performances by the groom's family and friends.",
+                location: "Leaf9, Sector 23, Gurugram",
+                mapLink: "https://maps.app.goo.gl/qz9fMszj9NWvhp1y7",
+                dressCode: "Festive / Glamorous"
+            },
+            {
+                id: "sb",
+                side: "b",
+                name: "Sehra Bandi",
+                icon: "fa-crown",
+                quote: "The groom adorned, ready for his bride.",
+                date: "Feb 25",
+                time: "01:30 PM",
+                modalTitle: "Sehra Bandi",
+                description: "The ritual of tying the Sehra (veil of flowers) on the groom's turban by his mother, symbolizing his readiness for marriage.",
+                location: "Leaf9, Sector 23, Gurugram",
+                mapLink: "https://maps.app.goo.gl/qz9fMszj9NWvhp1y7",
+                dressCode: "Traditional"
+            },
+            {
+                id: "b",
+                side: "b",
+                name: "Baraat",
+                icon: "fa-horse",
+                quote: "The grand arrival of the groom.",
+                date: "Feb 25",
+                time: "02:30 PM",
+                modalTitle: "Baraat",
+                description: "The groom's wedding procession.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            },
+            {
+                id: "w",
+                side: "b",
+                name: "Wedding",
+                icon: "fa-vihara",
+                quote: "Two souls, one heart, forever united.",
+                date: "Feb 25",
+                time: "04:00 PM",
+                modalTitle: "Wedding Ceremony",
+                description: "The sacred union.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            },
+            {
+                id: "r",
+                side: "b",
+                name: "Reception",
+                icon: "fa-glass-cheers",
+                quote: "An evening of dinner, dance & delight.",
+                date: "Feb 25",
+                time: "07:00 PM",
+                modalTitle: "Reception",
+                description: "Join us for a night of celebration.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            },
+            {
+                id: "v",
+                side: "b",
+                name: "Vidaai",
+                icon: "fa-door-open",
+                quote: "A bittersweet farewell to a new beginning.",
+                date: "Feb 25",
+                time: "11:00 PM",
+                modalTitle: "Vidaai",
+                description: "The emotional farewell as the bride leaves for her new home.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            },
+            // Girl's Side Events
+            {
+                id: "g",
+                side: "g",
+                name: "Gana",
+                icon: "fa-user-shield",
+                quote: "Sacred threads of protection & love.",
+                date: "Feb 24",
+                time: "12:00 PM",
+                modalTitle: "Gana",
+                description: "A ritual tying of the sacred thread (Mouli) on the bride's wrist to symbolize protection and blessings.",
+                location: "Home",
+                mapLink: "https://maps.app.goo.gl/fiPCpZab7VwTL4V88",
+                dressCode: "Traditional"
+            },
+            {
+                id: "h",
+                side: "g",
+                name: "Haldi",
+                icon: "fa-sun",
+                quote: "A splash of turmeric, a glow of love.",
+                date: "Feb 24",
+                time: "12:00 PM",
+                modalTitle: "Haldi",
+                description: "The pre-wedding ritual of applying turmeric paste to the bride. It is believed to bless her with glowing skin and ward off evil spirits.",
+                location: "Home",
+                mapLink: "https://maps.app.goo.gl/fiPCpZab7VwTL4V88",
+                dressCode: "Yellow Traditional"
+            },
+            {
+                id: "m",
+                side: "g",
+                name: "Mehandi",
+                icon: "fa-hands",
+                quote: "Intricate designs, timeless love.",
+                date: "Feb 24",
+                time: "05:00 PM",
+                modalTitle: "Mehandi",
+                description: "The Mehandi ceremony is where beautiful henna designs are applied to the bride's hands and feet.",
+                location: "Galgotia Hotel, Sector 23, Gurugram",
+                mapLink: "https://maps.app.goo.gl/21Hhk6xvFMYG8gLY8",
+                dressCode: "Vibrant Traditional"
+            },
+            {
+                id: "s",
+                side: "g",
+                name: "Sangeet",
+                icon: "fa-music",
+                quote: "A night of rhythm, dance, and joy.",
+                date: "Feb 24",
+                time: "05:00 PM",
+                modalTitle: "Sangeet",
+                description: "An evening filled with music and performances by the bride's family and friends.",
+                location: "Galgotia Hotel, Sector 23, Gurugram",
+                mapLink: "https://maps.app.goo.gl/21Hhk6xvFMYG8gLY8",
+                dressCode: "Festive / Glamorous"
+            },
+            {
+                id: "b",
+                side: "g",
+                name: "Baraat",
+                icon: "fa-horse",
+                quote: "The grand arrival of the groom.",
+                date: "Feb 25",
+                time: "02:30 PM",
+                modalTitle: "Baraat",
+                description: "Welcoming the groom's procession.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            },
+            {
+                id: "w",
+                side: "g",
+                name: "Wedding",
+                icon: "fa-vihara",
+                quote: "Two souls, one heart, forever united.",
+                date: "Feb 25",
+                time: "04:00 PM",
+                modalTitle: "Wedding Ceremony",
+                description: "The sacred union where we take our vows in the presence of the holy fire.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            },
+            {
+                id: "r",
+                side: "g",
+                name: "Reception",
+                icon: "fa-glass-cheers",
+                quote: "An evening of dinner, dance & delight.",
+                date: "Feb 25",
+                time: "07:00 PM",
+                modalTitle: "Reception",
+                description: "Join us for a night of celebration and feasting with friends and family.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            },
+            {
+                id: "v",
+                side: "g",
+                name: "Vidaai",
+                icon: "fa-door-open",
+                quote: "A bittersweet farewell to a new beginning.",
+                date: "Feb 25",
+                time: "11:00 PM",
+                modalTitle: "Vidaai",
+                description: "The emotional ceremony where the bride bids farewell to her family as she starts her new life.",
+                location: "Bliss Premiere, Sector 17A, Gurugram",
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
+                dressCode: "Traditional / Formal"
+            }
+        ];
+
+        // Function to generate event card HTML
+        function generateEventCard(event, delay) {
+            const modalId = `${event.id}Modal`;
+            return `
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="${delay}">
+                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#${modalId}" style="cursor: pointer;">
+                        <div class="mb-4"><i class="fas ${event.icon} text-gold display-4"></i></div>
+                        <h3 class="h2 mb-3">${event.name}</h3>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <span class="text-uppercase ls-2 small fw-bold">${event.date}</span>
+                            <span class="mx-2 text-gold">•</span>
+                            <span class="text-uppercase ls-2 small fw-bold">${event.time}</span>
+                        </div>
+                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"${event.quote}"</p>
+                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to generate modal HTML
+        function generateModal(event) {
+            const modalId = `${event.id}Modal`;
+            return `
+                <div class="modal fade" id="${modalId}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title font-serif fw-bold text-gold">${event.modalTitle}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center px-4 pb-5">
+                                <i class="fas ${event.icon} display-4 text-gold mb-4"></i>
+                                <p class="font-serif fs-5 mb-3 fst-italic">"${event.quote}"</p>
+                                <p class="text-muted">${event.description}</p>
+                                <p class="small text-muted fw-bold mt-2">
+                                    <a href="${event.mapLink}" target="_blank" rel="noopener" class="text-reset text-decoration-none" style="transition: color 0.3s;">
+                                        <i class="fas fa-map-marker-alt me-2"></i>${event.location} <i class="fas fa-external-link-alt ms-1 small"></i>
+                                    </a>
+                                </p>
+                                <div class="section-divider my-4"></div>
+                                <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: ${event.dressCode}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         // Initialize and handle dynamic content
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const sideParam = urlParams.get('s');
             const side = (sideParam === 'g') ? 'g' : 'b'; // Default to 'b' (boy)
-            let events = urlParams.get('e') || 'w'; // Default to Wedding
-            
-            // 1. Event Filtering Logic
-            const eventMap = {
-                'm': 'm', 'g': 'g', 'h': 'h', 's': 's', 
-                'b': 'b', 'w': 'w', 'r': 'r', 'v': 'v'
-            };
+            const eventsParam = urlParams.get('e') || 'w'; // Default to Wedding
 
-            // First, hide ALL event cards (both boy and girl sides) to ensure clean slate
-            const allEventCards = document.querySelectorAll('[id^="event-"]');
-            allEventCards.forEach(card => card.classList.add('d-none'));
+            // 1. Filter events by side and requested event IDs
+            const filteredEvents = eventsData.filter(event =>
+                event.side === side && eventsParam.includes(event.id)
+            );
 
-            // Then show only the relevant ones based on side and event string
-            for (const [char, suffix] of Object.entries(eventMap)) {
-                if (events.includes(char)) {
-                    const elementId = `event-${side}-${suffix}`;
-                    const element = document.getElementById(elementId);
-                    if (element) {
-                        element.classList.remove('d-none');
-                    }
-                }
+            // 2. Generate Event Cards and Modals
+            const eventsContainer = document.getElementById('eventsContainer');
+            const modalsContainer = document.getElementById('modalsContainer');
+
+            let cardsHTML = '';
+            let modalsHTML = '';
+            let delay = 100;
+
+            for (const event of filteredEvents) {
+                cardsHTML += generateEventCard(event, delay);
+                modalsHTML += generateModal(event);
+                delay += 100;
+                if (delay > 300) delay = 100; // Reset delay cycle
             }
+
+            eventsContainer.innerHTML = cardsHTML;
+            modalsContainer.innerHTML = modalsHTML;
 
             // 2. Name Swapping and Image Selection Logic
             const invitationImg = document.getElementById('invitationCard');
             const boyName = "Aman";
             const girlName = "Rashmi";
-            
+
             let firstPartner = boyName;
             let secondPartner = girlName;
             let initials = "A & R";
