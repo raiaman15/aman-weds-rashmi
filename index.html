@@ -365,6 +365,43 @@
 
         /* Mobile */
         @media (max-width: 768px) {
+            .hero, .invitation-showcase {
+                display: grid;
+                background: none !important;
+                min-height: unset;
+                height: auto;
+                padding: 0 !important;
+                position: relative;
+            }
+
+            .hero > *, .invitation-showcase > * {
+                grid-area: 1/1;
+            }
+
+            .mobile-bg {
+                width: 100%;
+                z-index: 1;
+            }
+
+            .mobile-bg img {
+                width: 100% !important;
+                height: auto !important;
+                display: block;
+            }
+
+            .hero::before, .invitation-showcase::before {
+                z-index: 2;
+                position: absolute;
+                inset: 0;
+            }
+
+            .hero .container, .invitation-showcase .container {
+                z-index: 3;
+                position: relative;
+                align-self: center;
+                padding: 2rem 1rem;
+            }
+
             .hero h1 { font-size: 2.5rem; }
             .hero-content { padding: 1.5rem; margin: 0 1rem; }
             .hero-date-box { padding: 0.5rem 1.5rem; }
@@ -378,30 +415,12 @@
             .timer-label { font-size: 0.6rem; letter-spacing: 1px; }
 
             .section-padding,
-            .invitation-showcase,
             .venue-section { padding: 60px 0; }
 
             .event-card { padding: 2rem 1.5rem; }
 
             .btn-gold { padding: 0.75rem 2rem; font-size: 0.85rem; }
             .btn-outline-gold { padding: 0.6rem 1.5rem; font-size: 0.75rem; }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 { font-size: 2rem; }
-            .hero-content { padding: 1.25rem; }
-            .hero-date-box { padding: 0.4rem 1rem; }
-            .hero-date-box .fs-4 { font-size: 0.9rem !important; }
-
-            .timer-box { min-width: 60px; padding: 0.75rem 0.25rem; }
-            .timer-num { font-size: 1.5rem; }
-            .timer-label { font-size: 0.55rem; }
-
-            .invitation-frame img,
-            .invitation-card { max-width: 100%; }
-
-            .venue-section .display-5 { font-size: 1.5rem !important; }
-            .venue-section .fs-5 { font-size: 1rem !important; }
         }
     </style>
 </head>
@@ -411,9 +430,6 @@
     <div id="lightbox">
         <img id="lightbox-img" src="" alt="Zoomed Invitation">
     </div>
-
-    <!-- Preload RSVP Form (hidden off-screen) -->
-    <iframe id="rsvpPreload" src="https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true&usp=sf_link" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;" aria-hidden="true"></iframe>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
@@ -435,6 +451,10 @@
 
     <!-- Header -->
     <section id="home" class="hero text-center">
+        <picture class="mobile-bg d-md-none">
+            <source srcset="assets/img/venue-night-mobile.png" media="(prefers-color-scheme: dark)">
+            <img src="assets/img/venue-day-mobile.png" alt="Venue Day">
+        </picture>
         <div class="container">
             <div class="hero-content mx-auto" data-aos="fade-up">
                 <div class="mb-3">
@@ -455,6 +475,10 @@
 
     <!-- Invitation Display -->
     <section id="invitation" class="invitation-showcase">
+        <picture class="mobile-bg d-md-none">
+            <source srcset="assets/img/venue-night-mobile.png" media="(prefers-color-scheme: dark)">
+            <img src="assets/img/venue-day-mobile.png" alt="Venue Day">
+        </picture>
         <div class="container text-center" style="position: relative; z-index: 2;">
             <div class="section-header" data-aos="fade-up">
                 <span class="font-script fs-1">We Request the Honor of Your Presence at</span>
@@ -691,7 +715,6 @@
 
         // RSVP Modal - Check for Chromium browser
         const rsvpModal = document.getElementById('rsvpModal');
-        const rsvpPreload = document.getElementById('rsvpPreload');
         const rsvpModalBody = document.getElementById('rsvpModalBody');
 
         // Detect if browser is Chromium-based
@@ -724,47 +747,55 @@
                         localStorage.setItem('rsvpFormClicked', 'true');
                     });
                 }
-            } else {
-                // Chromium-based browser - use iframe
-                if (rsvpPreload && !rsvpModalBody.contains(rsvpPreload)) {
-                    rsvpPreload.style.cssText = '';
-                    rsvpPreload.removeAttribute('aria-hidden');
-                    rsvpModalBody.appendChild(rsvpPreload);
-                }
             }
         }
 
         // Setup modal on page load
         document.addEventListener('DOMContentLoaded', setupRSVPModal);
 
-        // Move preloaded iframe to modal when it's about to show (for Chromium browsers)
+        // Load iframe when modal shows (for Chromium browsers)
         rsvpModal.addEventListener('show.bs.modal', function () {
-            if (isChromiumBrowser() && rsvpPreload && rsvpModalBody && !rsvpModalBody.contains(rsvpPreload)) {
-                rsvpPreload.style.cssText = '';
-                rsvpPreload.removeAttribute('aria-hidden');
-                rsvpModalBody.appendChild(rsvpPreload);
+            if (isChromiumBrowser()) {
+                // Check if iframe already exists
+                if (!rsvpModalBody.querySelector('iframe')) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSeQq2O-rsKVMvzry1-Rc1IOYOwk_FZgR9P7JzFCoiVGfC5UzQ/viewform?embedded=true&usp=sf_link";
+                    iframe.style.width = "100%";
+                    iframe.style.minHeight = "500px";
+                    iframe.style.height = "70vh";
+                    iframe.style.border = "none";
+                    iframe.style.background = "#fff";
+                    iframe.style.display = "block";
+                    rsvpModalBody.appendChild(iframe);
+                }
             }
         });
 
         window.addEventListener('load', function() {
-            // Check if user has already clicked the RSVP form link
-            if (localStorage.getItem('rsvpFormClicked') === 'true') {
-                return; // Don't show popup if already clicked
+            // Logic: Show popup for the first 3 times each day
+            const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+            const storageKeyDate = 'rsvpPopupDate';
+            const storageKeyCount = 'rsvpPopupDailyCount';
+
+            let storedDate = localStorage.getItem(storageKeyDate);
+            let dailyCount = parseInt(localStorage.getItem(storageKeyCount)) || 0;
+
+            // Reset count if it's a new day
+            if (storedDate !== today) {
+                dailyCount = 0;
+                localStorage.setItem(storageKeyDate, today);
+                localStorage.setItem(storageKeyCount, dailyCount);
             }
-            
-            // Track popup views in localStorage
-            const popupViewsKey = 'rsvpPopupViews';
-            let popupViews = parseInt(localStorage.getItem(popupViewsKey)) || 0;
-            
-            // Show popup only if less than 5 times
-            if (popupViews < 5) {
+
+            // Show popup if count is less than 3
+            if (dailyCount < 3) {
                 setTimeout(function() {
                     const modal = new bootstrap.Modal(rsvpModal);
                     modal.show();
                     
-                    // Increment counter
-                    popupViews++;
-                    localStorage.setItem(popupViewsKey, popupViews);
+                    // Increment and save count
+                    dailyCount++;
+                    localStorage.setItem(storageKeyCount, dailyCount);
                 }, 3000);
             }
         });
