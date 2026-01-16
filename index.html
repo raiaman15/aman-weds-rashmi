@@ -452,7 +452,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">A & R</a>
+            <a class="navbar-brand" href="#" id="navNames">A & R</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="fa fa-bars text-dark"></span>
             </button>
@@ -478,7 +478,7 @@
                 <div class="mb-3">
                     <span class="font-script fs-1">The Wedding Celebration of</span>
                 </div>
-                <h1 class="display-1 mb-2">Aman & Rashmi</h1>
+                <h1 class="display-1 mb-2" id="heroNames">Aman & Rashmi</h1>
                 
                 <div class="hero-date-box">
                     <span class="font-serif fw-bold fs-4 ls-3 text-dark">FEBRUARY 25, 2026</span>
@@ -539,8 +539,26 @@
             </div>
 
             <div class="row g-4 justify-content-center">
-                <!-- Card 1: Haldi -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <!-- Card 1: Mehandi -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-m">
+                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#mehandiModal" style="cursor: pointer;">
+                        <div class="mb-4">
+                            <i class="fas fa-hands text-gold display-4"></i>
+                        </div>
+                        <h3 class="h2 mb-3">Mehandi</h3>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span>
+                            <span class="mx-2 text-gold">•</span>
+                            <span class="text-uppercase ls-2 small fw-bold">10:00 AM</span>
+                        </div>
+                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"Intricate designs, timeless love."</p>
+                        <p class="small text-muted mb-0">Join us as we adorn the bride's hands with beautiful henna patterns.</p>
+                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Haldi -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" id="event-h">
                     <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#haldiModal" style="cursor: pointer;">
                         <div class="mb-4">
                             <i class="fas fa-sun text-gold display-4"></i>
@@ -557,8 +575,44 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Wedding -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <!-- Card 3: Sangeet -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300" id="event-s">
+                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#sangeetModal" style="cursor: pointer;">
+                        <div class="mb-4">
+                            <i class="fas fa-music text-gold display-4"></i>
+                        </div>
+                        <h3 class="h2 mb-3">Sangeet</h3>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <span class="text-uppercase ls-2 small fw-bold">Feb 24</span>
+                            <span class="mx-2 text-gold">•</span>
+                            <span class="text-uppercase ls-2 small fw-bold">07:00 PM</span>
+                        </div>
+                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A night of rhythm, dance, and joy."</p>
+                        <p class="small text-muted mb-0">An evening filled with music and performances by family and friends.</p>
+                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Baraat -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-b">
+                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#baraatModal" style="cursor: pointer;">
+                        <div class="mb-4">
+                            <i class="fas fa-horse text-gold display-4"></i>
+                        </div>
+                        <h3 class="h2 mb-3">Baraat</h3>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <span class="text-uppercase ls-2 small fw-bold">Feb 25</span>
+                            <span class="mx-2 text-gold">•</span>
+                            <span class="text-uppercase ls-2 small fw-bold">03:00 PM</span>
+                        </div>
+                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"The grand arrival of the groom."</p>
+                        <p class="small text-muted mb-0">Join the celebratory procession as the groom makes his way to the wedding.</p>
+                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Wedding -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" id="event-w">
                     <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#weddingModal" style="cursor: pointer;">
                         <div class="mb-4">
                             <i class="fas fa-vihara text-gold display-4"></i>
@@ -575,8 +629,8 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Reception -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <!-- Card 6: Reception -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300" id="event-r">
                     <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#receptionModal" style="cursor: pointer;">
                         <div class="mb-4">
                             <i class="fas fa-glass-cheers text-gold display-4"></i>
@@ -589,6 +643,24 @@
                         </div>
                         <p class="font-serif fs-5 text-muted mb-4 fst-italic">"An evening of dinner, dance & delight."</p>
                         <p class="small text-muted mb-0">Join us for a night of celebration and feasting with friends and family.</p>
+                        <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
+                    </div>
+                </div>
+
+                <!-- Card 7: Vidaai -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="event-v">
+                    <div class="event-card text-center" data-bs-toggle="modal" data-bs-target="#vidaaiModal" style="cursor: pointer;">
+                        <div class="mb-4">
+                            <i class="fas fa-door-open text-gold display-4"></i>
+                        </div>
+                        <h3 class="h2 mb-3">Vidaai</h3>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <span class="text-uppercase ls-2 small fw-bold">Feb 26</span>
+                            <span class="mx-2 text-gold">•</span>
+                            <span class="text-uppercase ls-2 small fw-bold">10:00 AM</span>
+                        </div>
+                        <p class="font-serif fs-5 text-muted mb-4 fst-italic">"A bittersweet farewell to a new beginning."</p>
+                        <p class="small text-muted mb-0">The emotional ceremony where the bride bids farewell to her family.</p>
                         <p class="text-gold small mt-3 fw-bold text-uppercase ls-1">Click for Details</p>
                     </div>
                 </div>
@@ -622,9 +694,9 @@
 
     <footer class="site-footer text-center py-5 text-muted">
         <div class="container">
-            <h2 class="font-script text-white mb-2 display-4">Aman & Rashmi</h2>
+            <h2 class="font-script text-white mb-2 display-4" id="footerNames">Aman & Rashmi</h2>
             <div class="section-divider mb-3"></div>
-            <p class="small ls-2 mb-0" style="color: rgba(255,255,255,0.6);">#AmanWedsRashmi</p>
+            <p class="small ls-2 mb-0" style="color: rgba(255,255,255,0.6);" id="footerHashtag">#AmanWedsRashmi</p>
         </div>
     </footer>
 
@@ -642,6 +714,63 @@
                     <p class="text-muted">The Haldi ceremony is a pre-wedding ritual where turmeric paste is applied to the bride and groom. It is believed to bless the couple with glowing skin and ward off evil spirits. Join us for this fun-filled, vibrant yellow celebration!</p>
                     <div class="section-divider my-4"></div>
                     <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Yellow Traditional</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mehandi Modal -->
+    <div class="modal fade" id="mehandiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-serif fw-bold text-gold">Mehandi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pb-5">
+                    <i class="fas fa-hands display-4 text-gold mb-4"></i>
+                    <p class="font-serif fs-5 mb-3 fst-italic">"Intricate designs, timeless love."</p>
+                    <p class="text-muted">The Mehandi ceremony is where beautiful henna designs are applied to the bride's hands and feet. It symbolizes the strength of the bond between the couple and is a time for celebration and song.</p>
+                    <div class="section-divider my-4"></div>
+                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Vibrant Traditional</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sangeet Modal -->
+    <div class="modal fade" id="sangeetModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-serif fw-bold text-gold">Sangeet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pb-5">
+                    <i class="fas fa-music display-4 text-gold mb-4"></i>
+                    <p class="font-serif fs-5 mb-3 fst-italic">"A night of rhythm, dance, and joy."</p>
+                    <p class="text-muted">The Sangeet is a musical extravaganza where both families come together to celebrate with dance, music, and laughter. Get ready for some stellar performances and an unforgettable night!</p>
+                    <div class="section-divider my-4"></div>
+                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Festive / Glamorous</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Baraat Modal -->
+    <div class="modal fade" id="baraatModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-serif fw-bold text-gold">Baraat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pb-5">
+                    <i class="fas fa-horse display-4 text-gold mb-4"></i>
+                    <p class="font-serif fs-5 mb-3 fst-italic">"The grand arrival of the groom."</p>
+                    <p class="text-muted">The Baraat is the groom's wedding procession, accompanied by his family and friends with music and dance. It marks the celebratory arrival of the groom at the wedding venue.</p>
+                    <div class="section-divider my-4"></div>
+                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
                 </div>
             </div>
         </div>
@@ -685,6 +814,25 @@
         </div>
     </div>
 
+    <!-- Vidaai Modal -->
+    <div class="modal fade" id="vidaaiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-0" style="background-color: var(--bg-cream); border-top: 4px solid var(--primary-gold) !important;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-serif fw-bold text-gold">Vidaai</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pb-5">
+                    <i class="fas fa-door-open display-4 text-gold mb-4"></i>
+                    <p class="font-serif fs-5 mb-3 fst-italic">"A bittersweet farewell to a new beginning."</p>
+                    <p class="text-muted">The Vidaai is an emotional ceremony where the bride bids a tearful farewell to her family as she starts her new life. It signifies her transition to her husband's home.</p>
+                    <div class="section-divider my-4"></div>
+                    <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: Traditional / Formal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hidden Preload Container -->
     <div id="rsvp-preload-container" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true"></div>
 
@@ -719,6 +867,71 @@
         // Sticky Navbar
         window.addEventListener('scroll', () => {
             document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Name Swapping Logic based on 's' query param
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const side = urlParams.get('s');
+            
+            // Event Filtering Logic
+            let events = urlParams.get('e');
+            if (!events) {
+                events = 'w'; // Default to Wedding only if 'e' is absent or empty
+            }
+            
+            const eventMap = {
+                'm': 'event-m',
+                'h': 'event-h',
+                's': 'event-s',
+                'b': 'event-b',
+                'w': 'event-w',
+                'r': 'event-r',
+                'v': 'event-v'
+            };
+
+            for (const [char, id] of Object.entries(eventMap)) {
+                const element = document.getElementById(id);
+                if (element) {
+                    if (events.includes(char)) {
+                        element.classList.remove('d-none');
+                    } else {
+                        element.classList.add('d-none');
+                    }
+                }
+            }
+
+            if (side === 'g') {
+                const boyName = "Aman";
+                const girlName = "Rashmi";
+                const fullTitle = `${girlName} & ${boyName}`;
+                const shortTitle = "R & A";
+                const hashtag = `#${girlName}Weds${boyName}`;
+                const description = `Wedding Celebration of ${girlName} & ${boyName} | February 25, 2026`;
+
+                // Update DOM elements
+                document.getElementById('navNames').textContent = shortTitle;
+                document.getElementById('heroNames').textContent = fullTitle;
+                document.getElementById('footerNames').textContent = fullTitle;
+                document.getElementById('footerHashtag').textContent = hashtag;
+
+                // Update Page Title
+                document.title = `The Wedding of ${fullTitle}`;
+
+                // Update Meta Tags
+                document.querySelector('meta[name="description"]').setAttribute("content", description);
+                document.querySelector('meta[property="og:title"]').setAttribute("content", `The Wedding of ${fullTitle}`);
+                document.querySelector('meta[property="og:description"]').setAttribute("content", description);
+                document.querySelector('meta[property="twitter:title"]').setAttribute("content", `The Wedding of ${fullTitle}`);
+                document.querySelector('meta[property="twitter:description"]').setAttribute("content", description);
+            }
+
+            // Refresh AOS animations after layout changes
+            setTimeout(() => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
+                }
+            }, 100);
         });
 
         // Countdown
