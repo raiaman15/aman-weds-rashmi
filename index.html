@@ -1120,7 +1120,7 @@
                 mapLink: "https://maps.app.goo.gl/21Hhk6xvFMYG8gLY8"
             },
             {
-                id: "bf",
+                id: "bp",
                 side: "g",
                 name: "Baraat & Pheras",
                 icon: "fa-vihara",
@@ -1204,7 +1204,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const sideParam = urlParams.get('s');
             const side = (sideParam === 'g') ? 'g' : 'b'; // Default to 'b' (boy)
-            const defaultEvents = (side === 'g') ? 'ghmsbfr' : 'r'; // Girl: All events, Boy: Reception
+            const defaultEvents = (side === 'g') ? 'ghmsbpr' : 'r'; // Girl: All events, Boy: Reception
             const eventsParam = urlParams.get('e') || defaultEvents;
 
             // 1. Filter events by side and requested event IDs
