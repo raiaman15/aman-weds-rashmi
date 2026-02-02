@@ -1092,90 +1092,45 @@
                 mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
                 dressCode: "Traditional / Formal"
             },
-            // Girl's Side Events
+            // Girl's Side Events (Consolidated)
             {
-                id: "g",
+                id: "gh",
                 side: "g",
-                name: "Gana",
-                icon: "fa-user-shield",
-                quote: "Sacred threads of protection & love.",
-                date: "Feb 24",
-                time: "12:00 PM",
-                modalTitle: "Gana",
-                description: "A ritual tying of the sacred thread (Mouli) on the bride's wrist to symbolize protection and blessings.",
-                location: "Home",
-                mapLink: "https://maps.app.goo.gl/fiPCpZab7VwTL4V88",
-                dressCode: "Vibrant / Festive / Traditional"
-            },
-            {
-                id: "h",
-                side: "g",
-                name: "Haldi",
+                name: "Gana & Haldi",
                 icon: "fa-sun",
-                quote: "A splash of turmeric, a glow of love.",
+                quote: "Sacred threads and golden blessings.",
                 date: "Feb 24",
                 time: "12:00 PM",
-                modalTitle: "Haldi",
-                description: "The pre-wedding ritual of applying turmeric paste to the bride. It is believed to bless her with glowing skin and ward off evil spirits.",
+                modalTitle: "Gana & Haldi",
+                description: "The sacred thread (Mouli) is tied on the bride's wrist for protection, followed by the turmeric ritual to bless her with glowing skin and ward off evil spirits.",
                 location: "Home",
-                mapLink: "https://maps.app.goo.gl/fiPCpZab7VwTL4V88",
-                dressCode: "Yellow Traditional"
+                mapLink: "https://maps.app.goo.gl/fiPCpZab7VwTL4V88"
             },
             {
-                id: "m",
+                id: "ms",
                 side: "g",
-                name: "Mehandi",
+                name: "Mehandi & Sangeet",
                 icon: "fa-hands",
-                quote: "Intricate designs, timeless love.",
+                quote: "Intricate designs, rhythm, and joy.",
                 date: "Feb 24",
-                time: "05:00 PM",
-                modalTitle: "Mehandi",
-                description: "The Mehandi ceremony is where beautiful henna designs are applied to the bride's hands and feet.",
+                time: "06:00 PM",
+                modalTitle: "Mehandi & Sangeet",
+                description: "Beautiful henna designs adorn the bride's hands and feet, followed by an evening filled with music and performances by family and friends.",
                 location: "Galgotia Hotel, Sector 23, Gurugram",
-                mapLink: "https://maps.app.goo.gl/21Hhk6xvFMYG8gLY8",
-                dressCode: "Vibrant / Festive / Traditional"
+                mapLink: "https://maps.app.goo.gl/21Hhk6xvFMYG8gLY8"
             },
             {
-                id: "s",
+                id: "bf",
                 side: "g",
-                name: "Sangeet",
-                icon: "fa-music",
-                quote: "A night of rhythm, dance, and joy.",
-                date: "Feb 24",
-                time: "05:00 PM",
-                modalTitle: "Sangeet",
-                description: "An evening filled with music and performances by the bride's family and friends.",
-                location: "Galgotia Hotel, Sector 23, Gurugram",
-                mapLink: "https://maps.app.goo.gl/21Hhk6xvFMYG8gLY8",
-                dressCode: "Vibrant / Festive / Traditional"
-            },
-            {
-                id: "b",
-                side: "g",
-                name: "Baraat",
-                icon: "fa-horse",
-                quote: "The grand arrival of the groom.",
-                date: "Feb 25",
-                time: "02:30 PM",
-                modalTitle: "Baraat",
-                description: "Welcoming the groom's procession.",
-                location: "Bliss Premiere, Sector 17A, Gurugram",
-                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
-                dressCode: "Traditional / Formal"
-            },
-            {
-                id: "w",
-                side: "g",
-                name: "Wedding",
+                name: "Baraat & Feras",
                 icon: "fa-vihara",
-                quote: "Two souls, one heart, forever united.",
+                quote: "The grand arrival and sacred union.",
                 date: "Feb 25",
-                time: "04:00 PM",
-                modalTitle: "Wedding Ceremony",
-                description: "The sacred union where we take our vows in the presence of the holy fire.",
+                time: "03:00 PM",
+                modalTitle: "Baraat & Feras",
+                description: "Welcoming the groom's procession, followed by the sacred wedding ceremony where we take our vows in the presence of the holy fire.",
                 location: "Bliss Premiere, Sector 17A, Gurugram",
-                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
-                dressCode: "Traditional / Formal"
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6"
             },
             {
                 id: "r",
@@ -1188,22 +1143,7 @@
                 modalTitle: "Reception",
                 description: "Join us for a night of celebration and feasting with friends and family.",
                 location: "Bliss Premiere, Sector 17A, Gurugram",
-                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
-                dressCode: "Traditional / Formal"
-            },
-            {
-                id: "v",
-                side: "g",
-                name: "Vidaai",
-                icon: "fa-door-open",
-                quote: "A bittersweet farewell to a new beginning.",
-                date: "Feb 25",
-                time: "11:00 PM",
-                modalTitle: "Vidaai",
-                description: "The emotional ceremony where the bride bids farewell to her family as she starts her new life.",
-                location: "Bliss Premiere, Sector 17A, Gurugram",
-                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6",
-                dressCode: "Traditional / Formal"
+                mapLink: "https://maps.app.goo.gl/1bkTL9p2Diw7scAs6"
             }
         ];
 
@@ -1230,6 +1170,10 @@
         // Function to generate modal HTML
         function generateModal(event) {
             const modalId = `${event.id}Modal`;
+            const dressCodeHtml = event.dressCode
+                ? `<div class="section-divider my-4"></div>
+                   <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: ${event.dressCode}</p>`
+                : '';
             return `
                 <div class="modal fade" id="${modalId}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -1247,8 +1191,7 @@
                                         <i class="fas fa-map-marker-alt me-2"></i>${event.location} <i class="fas fa-external-link-alt ms-1 small"></i>
                                     </a>
                                 </p>
-                                <div class="section-divider my-4"></div>
-                                <p class="mb-0 fw-bold small text-uppercase ls-2 text-gold">Dress Code: ${event.dressCode}</p>
+                                ${dressCodeHtml}
                             </div>
                         </div>
                     </div>
@@ -1261,7 +1204,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const sideParam = urlParams.get('s');
             const side = (sideParam === 'g') ? 'g' : 'b'; // Default to 'b' (boy)
-            const defaultEvents = (side === 'g') ? 'wr' : 'r'; // Girl: Wedding+Reception, Boy: Reception
+            const defaultEvents = (side === 'g') ? 'ghmsbfr' : 'r'; // Girl: All events, Boy: Reception
             const eventsParam = urlParams.get('e') || defaultEvents;
 
             // 1. Filter events by side and requested event IDs
