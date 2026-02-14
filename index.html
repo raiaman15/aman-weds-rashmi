@@ -1204,7 +1204,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const sideParam = urlParams.get('s');
             const side = (sideParam === 'g') ? 'g' : 'b'; // Default to 'b' (boy)
-            const defaultEvents = (side === 'g') ? 'ghmsbpr' : 'r'; // Girl: All events, Boy: Reception
+            const defaultEvents = (side === 'g') ? 'ghmsbpr' : 'hsbbwrv'; // Girl: All events, Boy: All events
             const eventsParam = urlParams.get('e') || defaultEvents;
 
             // 1. Filter events by side and requested event IDs
